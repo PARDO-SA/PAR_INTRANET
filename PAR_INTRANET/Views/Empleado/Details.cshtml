@@ -1,0 +1,107 @@
+﻿@model PAR_INTRANET.Models.Clases.Empleado
+@if (Session["Codusr"] == null)
+{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/sweetalert2.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        let timerInterval
+        swal({
+            type: 'error',
+            title: 'Sesión Expirada',
+            html: 'Serás redirigido en <strong></strong> milisegundos.',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            heightAuto: false,
+            timer: 8000,
+            onOpen: () => {
+                swal.showLoading()
+                timerInterval = setInterval(() => {
+                    swal.getContent().querySelector('strong')
+                        .textContent = swal.getTimerLeft()
+                }, 100)
+            },
+            onClose: () => {
+                clearInterval(timerInterval);
+                redireccion();
+            }
+        }).then((result) => {
+            if (
+                // Read more about handling dismissals
+                result.dismiss === swal.DismissReason.timer
+            ) {
+                console.log('I was closed by the timer')
+            }
+        })
+
+
+        function redireccion() {
+            window.location.href = "/Login/logueo";
+        }
+
+    </script>
+
+}
+@{
+    ViewBag.Title = "Prueba";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 align="center">DETALLE DE EMPLEADO</h2>
+
+<div class="caja_detalle">
+    <table class="tabla_detalle">
+        <tr>
+            <td>@Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "lbl_tabla" })</td>
+            <td> @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "input_tabla_disabled", @readonly = "readonly" } })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "lbl_tabla" })</td>
+            <td> @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input_tabla_disabled", @readonly = "readonly" } })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "lbl_tabla" })</td>
+            <td>@Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "input_tabla_disabled", @readonly = "readonly" } })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Sucursal.Dessuc, htmlAttributes: new { @class = "lbl_tabla" })</td>
+            <td>@Html.EditorFor(model => model.Sucursal.Dessuc, new { htmlAttributes = new { @class = "input_tabla_disabled", @readonly = "readonly" } })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Funcion Principal", htmlAttributes: new { @class = "lbl_tabla" })</td>
+            <td>@Html.EditorFor(model => model.FuncionPri.Descripcion, new { htmlAttributes = new { @class = "input_tabla_disabled", @readonly = "readonly" } })</td>
+        </tr>
+
+        <tr>
+            <td>@Html.Label("Vendedor", htmlAttributes: new { @class = "lbl_tabla" })</td>
+            <td>@Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "input_tabla_disabled", @readonly = "readonly" } })</td>
+        </tr>
+
+
+        <tr>
+            <td> @Html.Label("Funcion Secundaria", htmlAttributes: new { @class = "lbl_tabla" })</td>
+            <td> @Html.EditorFor(model => model.FuncionSec.Descripcion, new { htmlAttributes = new { @class = "input_tabla_disabled", @readonly = "readonly" } })</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "lbl_tabla" })</td>
+            <td>
+                @if (Model.Inactivo == false)
+                {
+                    @Html.Editor("activo", new { htmlAttributes = new { @class = "input_tabla_activo", @readonly = "readonly" } })
+                }
+                else
+                {
+                    @Html.Editor("inactivo", new { htmlAttributes = new { @class = "input_tabla_inactivo", @readonly = "readonly" } })
+                }
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+

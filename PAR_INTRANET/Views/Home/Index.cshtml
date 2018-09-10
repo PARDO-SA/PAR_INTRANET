@@ -1,0 +1,52 @@
+﻿@if (Session["Codusr"] == null)
+{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/sweetalert2.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        let timerInterval
+        swal({
+            type: 'error',
+            title: 'Sesión Expirada',
+            html: 'Serás redirigido en <strong></strong> milisegundos.',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            heightAuto: false,
+            timer: 8000,
+            onOpen: () => {
+                swal.showLoading()
+                timerInterval = setInterval(() => {
+                    swal.getContent().querySelector('strong')
+                        .textContent = swal.getTimerLeft()
+                }, 100)
+            },
+            onClose: () => {
+                clearInterval(timerInterval);
+                redireccion();
+            }
+        }).then((result) => {
+            if (
+                // Read more about handling dismissals
+                result.dismiss === swal.DismissReason.timer
+            ) {
+                console.log('I was closed by the timer')
+            }
+        })
+
+
+        function redireccion() {
+            window.location.href = "/Login/logueo";
+        }
+
+    </script>
+
+}
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+

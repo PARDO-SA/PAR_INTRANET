@@ -1,0 +1,289 @@
+﻿body {
+}
+
+.caja_detalle{
+    margin-top:5%;
+    margin-left:33%;
+    width:50%;
+    height:auto;
+}
+
+.tabla_detalle{
+    border:1px solid;
+    height:auto;
+}
+
+    .tabla_detalle td {
+        box-sizing: border-box;
+        width: 50%;
+        height: auto;
+        border: 1px solid #ccc;
+    }
+
+
+.caja_agregar {
+    margin-top: 5%;
+    margin-left: 33%;
+    width: 50%;
+    height: auto;
+}
+
+.tabla_agregar {
+    border: 1px solid;
+    height: auto;
+}
+
+    .tabla_agregar td {
+        box-sizing: border-box;
+        width: 50%;
+        height: auto;
+        border: 1px solid #ccc;
+    }
+
+
+.lbl_tabla {
+    float: left;
+    font-size:18px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 7px;
+    position: relative;
+    text-align: right;
+}
+
+.input_tabla_disabled {
+    background-color: lightgray;
+    box-sizing: border-box;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    width: 100%;
+}
+
+.input_tabla {
+    box-sizing: border-box;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    width: 100%;
+}
+
+.input_tabla_activo {
+    background-color:forestgreen;
+    color: white;
+    box-sizing: border-box;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    width: 100%;
+}
+
+.input_tabla_inactivo {
+    background-color: red;
+    color: white;
+    box-sizing: border-box;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    width: 100%;
+}
+
+.caja_delete {
+    margin-top: 5%;
+    margin-left: 33%;
+    width: 50%;
+    height: auto;
+}
+
+.tabla_delete {
+    border: 1px solid;
+    height: auto;
+}
+
+    .tabla_delete td {
+        box-sizing: border-box;
+        width: 50%;
+        height: auto;
+        border: 1px solid #ccc;
+    }
+
+.caja_edit {
+    margin-top: 5%;
+    margin-left: 33%;
+    width: 50%;
+    height: auto;
+}
+
+.tabla_edit {
+    border: 1px solid;
+    height: auto;
+}
+
+    .tabla_edit td {
+        box-sizing: border-box;
+        width: 50%;
+        height: auto;
+        border: 1px solid #ccc;
+    }
+
+.botones_inf{
+    margin-top:3%;
+    width:80%;
+}
+
+.btn_izq{
+    float:left;
+    width:50%;
+}
+
+.btn_der {
+    float: left;
+    width: 50%;
+}
+
+.btn_formgroup {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin-top:4%;
+    margin-left:10%;
+    margin-bottom: 15px;
+    height: 25px;
+}
+
+.btn-default.btn-on.active {
+    background-color: #5BB75B;
+    color: white;
+    font-size:14px;
+    height:34px;
+    line-height:20px;
+    margin-left:0px;
+    padding-bottom:6px;
+    padding-left:12px;
+    padding-right:12px;
+    padding-top:6px;
+    position:relative;
+}
+
+.btn-default.btn-on {
+    border:1px solid;
+    color: black;
+    font-size: 14px;
+    height: 34px;
+    line-height: 20px;
+    margin-left: 0px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    position: relative;
+}
+.btn-default.btn-off.active {
+    background-color: #DA4F49;
+    color: white;
+    font-size: 14px;
+    height: 34px;
+    line-height: 20px;
+    margin-left: 0px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+}
+
+.btn-default.btn-off{
+    border:1px solid;
+    color: black;
+    font-size: 14px;
+    height: 34px;
+    line-height: 20px;
+    margin-left: 0px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+}
+
+.nuevo-boton{
+    float: left;
+    padding-top:1%;
+    text-align: right;
+}
+
+.dt-button.btn-nuevo {
+    float: left;
+    width: 37px;
+    height: 37px;
+    background-color: transparent;
+    border: none;
+    border-image: none;
+    background-image: url("img/ico_add.png");
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.btn-nuevo.dt-button:hover:not(.disabled) {
+    background-color: transparent;
+    opacity: 0.3;
+}
+
+
+.dt-button.btn-excel {
+    float: left;
+    width: 37px;
+    height: 37px;
+    background-color: transparent;
+    border: none;
+    border-image: none;
+    background-image: url("img/ico_excel.png");
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.btn-excel.dt-button:hover:not(.disabled) {
+    background-color: transparent;
+    opacity: 0.3;
+}
+
+.dt-button.btn-pdf {
+    float: left;
+    width: 37px;
+    height: 37px;
+    background-color: transparent;
+    border: none;
+    border-image: none;
+    background-image: url("img/ico_pdf.png");
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.btn-pdf.dt-button:hover:not(.disabled) {
+    background-color: transparent;
+    opacity: 0.3;
+}
+
+.dt-button.btn-print {
+    float: left;
+    width: 37px;
+    height: 37px;
+    background-color: transparent;
+    border: none;
+    border-image: none;
+    background-image: url("img/ico_print.png");
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.btn-print.dt-button:hover:not(.disabled) {
+    background-color: transparent;
+    opacity: 0.3;
+}
