@@ -7,15 +7,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PAR_INTRANET.Models.Clases
 {
-    [Table("PAR_Emple")]
+    [Table("PAR_EMPLE1")]
     public class Empleado
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = "Legajo")]
         public int Legajo { get; set; }
 
+        [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
-        [StringLength(50)]
         public string Email { get; set; }
 
         [Display(Name = "Nombre")]
@@ -25,6 +27,9 @@ namespace PAR_INTRANET.Models.Clases
         [Display(Name = "Cod. Vendedor")]
         [StringLength(4)]
         public string CodVen { get; set; }
+
+        [Display(Name = "Cuil")]
+        public Int64 Cuil { get; set; }
 
         [ForeignKey("Sucursal")]
         [Display(Name = "Sucursal")]
@@ -45,6 +50,5 @@ namespace PAR_INTRANET.Models.Clases
         public virtual Sucursal Sucursal { get; set; }
         public virtual FuncionEmple FuncionPri { get; set; }
         public virtual FuncionEmple FuncionSec { get; set; }
-
     }
 }

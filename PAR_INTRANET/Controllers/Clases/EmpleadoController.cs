@@ -46,9 +46,9 @@ namespace PAR_INTRANET.Controllers.Clases
         // GET: Empleado/Create
         public ActionResult Create()
         {
-            ViewBag.CodSuc = new SelectList(db.Sucursales, "CodSuc", "dessuc");
-            ViewBag.FuncionP = new SelectList(db.Funciones, "id", "descripcion");
-            ViewBag.FuncionS = new SelectList(db.Funciones, "id", "descripcion");
+           ViewBag.CodSuc = new SelectList(db.Sucursales, "CodSuc", "dessuc");
+           ViewBag.FuncionP = new SelectList(db.Funciones, "id", "descripcion");
+           ViewBag.FuncionS = new SelectList(db.Funciones, "id", "descripcion");
 
             return View();
         }
@@ -58,12 +58,11 @@ namespace PAR_INTRANET.Controllers.Clases
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Legajo,Email,Nombre,CodVen,CodSuc,FuncionP,FuncionS,Inactivo")] Empleado empleado)
+        public ActionResult Create(Empleado empleado)
         {
             if (ModelState.IsValid)
             {
-                empleado.Inactivo = false;
-                empleado.Legajo = 2999;
+               
                 db.Empleados.Add(empleado);
                 db.SaveChanges();
                 return RedirectToAction("Index");

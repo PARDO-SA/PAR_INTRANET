@@ -1805,6 +1805,7 @@
     <Content Include="Scripts\pdfmake.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\script-custom-validator.js" />
     <Content Include="Scripts\sweetalert2.all.js" />
     <Content Include="Scripts\sweetalert2.js" />
     <Content Include="Scripts\table.js" />
@@ -1830,8 +1831,8 @@
     <Content Include="Views\Empleado\Details.cshtml" />
     <Content Include="Views\Empleado\Delete.cshtml" />
     <Content Include="Views\Empleado\Edit.cshtml" />
-    <Content Include="Views\Empleado\Create.cshtml" />
     <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Views\Empleado\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
