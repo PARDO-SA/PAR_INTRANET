@@ -15,11 +15,12 @@ namespace PAR_INTRANET.Models.Clases
         [Display(Name = "Legajo")]
         public int Legajo { get; set; }
 
-        [Required]
+        [Required] 
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Required]
         [Display(Name = "Nombre")]
         [StringLength(50)]
         public string Nombre { get; set; }
@@ -28,14 +29,17 @@ namespace PAR_INTRANET.Models.Clases
         [StringLength(4)]
         public string CodVen { get; set; }
 
+        [Required]
         [Display(Name = "Cuil")]
         public Int64 Cuil { get; set; }
 
+        [Required]
         [ForeignKey("Sucursal")]
         [Display(Name = "Sucursal")]
         [StringLength(3)]
         public string CodSuc { get; set; }
 
+        [Required]
         [ForeignKey("FuncionPri")]
         [Display(Name = "Función")]
         public int FuncionP { get; set; }

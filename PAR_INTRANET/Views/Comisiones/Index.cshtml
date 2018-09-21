@@ -1,0 +1,123 @@
+﻿@model IEnumerable<PAR_INTRANET.Models.Clases.Comision>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DesComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FecVigDesComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FecVigHasComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodNivArt1Comi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodNivArt2Comi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarcaComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtIncComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtExcComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendeComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImpComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PorComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestoComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImpRestoComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PorRestoComi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inactivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdFuncion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FecVigDesComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FecVigHasComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodNivArt1Comi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodNivArt2Comi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarcaComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtIncComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtExcComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendeComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PorComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestoComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpRestoComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PorRestoComi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inactivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdFuncion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdComi }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdComi }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdComi })
+        </td>
+    </tr>
+}
+
+</table>
