@@ -153,6 +153,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Clases\ComisionesController.cs" />
     <Compile Include="Controllers\Clases\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -160,8 +161,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Clases\Comision.cs" />
+    <Compile Include="Models\Clases\ComisionArticulo.cs" />
     <Compile Include="Models\Clases\Empleado.cs" />
     <Compile Include="Models\Clases\Funcion.cs" />
+    <Compile Include="Models\Clases\FuncionComi.cs" />
+    <Compile Include="Models\Clases\Marca.cs" />
+    <Compile Include="Models\Clases\Rubro.cs" />
+    <Compile Include="Models\Clases\SubRubro.cs" />
     <Compile Include="Models\Clases\Sucursal.cs" />
     <Compile Include="Models\Contexto\CentralDBContexto.cs" />
     <Compile Include="Models\Contexto\SistemaDBContexto.cs" />
@@ -1833,6 +1840,11 @@
     <Content Include="Views\Empleado\Edit.cshtml" />
     <Content Include="Views\Sweet\Alert.cshtml" />
     <Content Include="Views\Empleado\Create.cshtml" />
+    <Content Include="Views\Comisiones\Create.cshtml" />
+    <Content Include="Views\Comisiones\Delete.cshtml" />
+    <Content Include="Views\Comisiones\Details.cshtml" />
+    <Content Include="Views\Comisiones\Edit.cshtml" />
+    <Content Include="Views\Comisiones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
