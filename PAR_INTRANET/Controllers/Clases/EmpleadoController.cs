@@ -46,9 +46,9 @@ namespace PAR_INTRANET.Controllers.Clases
         // GET: Empleado/Create
         public ActionResult Create()
         {
-           ViewBag.CodSuc = new SelectList(db.Sucursales, "CodSuc", "dessuc");
-           ViewBag.FuncionP = new SelectList(db.Funciones, "id", "descripcion");
-           ViewBag.FuncionS = new SelectList(db.Funciones, "id", "descripcion");
+            ViewBag.CodSuc = new SelectList(db.Sucursales, "CodSuc", "dessuc");
+            ViewBag.FuncionP = new SelectList(db.Funciones, "id", "descripcion");
+            ViewBag.FuncionS = new SelectList(db.Funciones, "id", "descripcion");
 
             return View();
         }
@@ -91,10 +91,8 @@ namespace PAR_INTRANET.Controllers.Clases
             ViewBag.CodSuc = new SelectList(db.Sucursales, "CodSuc", "dessuc", empleado.CodSuc);
             ViewBag.FuncionP = new SelectList(db.Funciones, "id", "descripcion", empleado.FuncionP);
             ViewBag.FuncionS = new SelectList(db.Funciones, "id", "descripcion", empleado.FuncionS);
-
             return View(empleado);
-          
-          
+                 
         }
 
         // POST: Empleado/Edit/5
@@ -110,7 +108,10 @@ namespace PAR_INTRANET.Controllers.Clases
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.CodSuc = new SelectList(db.Sucursales, "CodSuc", "dessuc", empleado.CodSuc);
+            ViewBag.FuncionP = new SelectList(db.Funciones, "id", "descripcion", empleado.FuncionP);
+            ViewBag.FuncionS = new SelectList(db.Funciones, "id", "descripcion", empleado.FuncionS);
             return View(empleado);
         }
 
