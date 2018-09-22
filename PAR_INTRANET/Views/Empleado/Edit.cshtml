@@ -1,10 +1,11 @@
 ﻿@model PAR_INTRANET.Models.Clases.Empleado
+<link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert2.js"></script>
 @if (Session["Codusr"] == null)
 {
     <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/sweetalert2.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+
 
     <script type="text/javascript">
         let timerInterval
@@ -44,123 +45,138 @@
     </script>
 
 }
+
+
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 align="center">Edición de Empleado</h2>
-
-@using (Html.BeginForm("Edit", "Empleado", FormMethod.Post, new { @id = "registerFormId", role = "form", enctype = "multipart/form-data", onsubmit = "Validar()" }))
-{
-    @Html.AntiForgeryToken()
-    HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
-
-    <div class="caja_edit">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <table class="tabla_edit">
-            <tr>
-                <td> @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "lbl_tabla" })</td>
-                <td>
-                    @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "input_tabla_disabled", @readonly = "readonly" } })
-                    @Html.ValidationMessageFor(model => model.Legajo, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td> @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "lbl_tabla" })</td>
-                <td>
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input_tabla" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "lbl_tabla" })</td>
-                <td>
-                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "input_tabla" } })
-                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(model => model.Sucursal.Dessuc, htmlAttributes: new { @class = "lbl_tabla" })</td>
-                <td>
-                    @Html.DropDownList("CodSuc", null, htmlAttributes: new { @class = "input_tabla" })
-                    @Html.ValidationMessageFor(model => model.CodSuc, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(model => model.FuncionP, htmlAttributes: new { @class = "lbl_tabla" })</td>
-                <td>
-                    @Html.DropDownList("FuncionP", null, htmlAttributes: new { @class = "input_tabla" })
-
-                    @Html.ValidationMessageFor(model => model.FuncionP, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>@Html.Label("Vendedor", htmlAttributes: new { @class = "lbl_tabla" })</td>
-                <td>
-                    @Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "input_tabla" } })
-                    @Html.ValidationMessageFor(model => model.CodVen, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td> @Html.Label("Funcion Secundaria", htmlAttributes: new { @class = "lbl_tabla" })</td>
-                <td>
-                    @Html.DropDownList("FuncionS", null, "--SIN FUNCIÓN SECUNDARIA--", htmlAttributes: new { @class = "input_tabla" })
-                    @Html.ValidationMessageFor(model => model.FuncionS, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-
-            <tr>
-                <td>@Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "lbl_tabla" })</td>
-                <td>
-                    <div class="btn_formgroup" id="status" data-toggle="buttons">
-                        @if (Model.Inactivo == false)
-                        {
-                            <label class="btn btn-default btn-on btn-xs active">
-                                @Html.RadioButtonFor(model => model.Inactivo, "false") ACTIVO
-                            </label>
-                            <label class="btn btn-default btn-off btn-xs ">
-                                @Html.RadioButtonFor(model => model.Inactivo, "true") INACTIVO
-                            </label>
-                        }
-                        else
-                        {
-                            <label class="btn btn-default btn-on btn-xs ">
-                                @Html.RadioButtonFor(model => model.Inactivo, "false") ACTIVO
-                            </label>
-                            <label class="btn btn-default btn-off btn-xs active ">
-                                @Html.RadioButtonFor(model => model.Inactivo, "true") INACTIVO
-                            </label>
-                        }
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <div class="botones_inf">
-            <div class="btn_izq">
-                <input type="submit" value="Aplicar Cambios" class="btn btn-primary" />
-            </div>
-            <div class="btn_der">
-                <a href='@Url.Action("Index", "Empleado")'>
-                    <img src="~/Content/img/volver.png" title="Borrar" width="130" height="35" />
-                </a>
-            </div>
+<div class="col-md-6">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">EDICIÓN DE EMPLEADO</h3>
         </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        @using (Html.BeginForm("Edit", "Empleado", FormMethod.Post, new { @id = "empleEdit", role = "form", enctype = "multipart/form-data", onsubmit = "Mensaje()", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(m => m.Legajo, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cuil, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Cuil, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Cuil, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FuncionP, "FuncionP", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("FuncionP", null, htmlAttributes: new { @id = "funcion1", @class = "form-control" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FuncionS, "FuncionS", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("FuncionS", null, htmlAttributes: new { @id = "funcion2", @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div id="codvendedor" class="form-group">
+                    @Html.LabelFor(model => model.CodVen, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodSuc, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("CodSuc", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <input type="button" name="Cancelar" value="Cancelar" class="btn btn-danger" onClick="location.href='/Empleado/Index'">
+                <!--<button type="submit" class="btn btn-default">Cancelar</button>-->
+                <button type="submit" class="btn btn-info pull-right">Editar Empleado</button>
+            </div>
+            <!-- /.box-footer -->
+        }
     </div>
-}
+</div>
+
 <script type="text/javascript">
-    function Validar() {
+    function Mensaje() {
         swal({
             heightAuto: false,
             position: 'top-end',
             type: 'success',
-            title: 'Empleado Eliminado',
+            title: 'Empleado Editado',
             showConfirmButton: false,
-            timer: 3000
+            timer: 4000
         })
 
         return true;
     }
+
+    var select1 = document.getElementById('funcion1');
+    var select2 = document.getElementById('funcion2');
+
+    select1.addEventListener('change',
+        function () {
+            var selectedOption1 = this.options[select1.selectedIndex];
+            if ((selectedOption1.value == 5) || (this.options[select2.selectedIndex].value == 5)) {
+                $("#codvendedor").show();
+            } else {
+                $("#codvendedor").hide();
+            }
+        });
+
+
+    select2.addEventListener('change',
+        function () {
+            var selectedOption2 = this.options[select2.selectedIndex];
+            if ((selectedOption2.value == 5) || (this.options[select1.selectedIndex].value == 5)) {
+                $("#codvendedor").show();
+            } else {
+                $("#codvendedor").hide();
+            }
+        });
+
 </script>
 
 @section Scripts {

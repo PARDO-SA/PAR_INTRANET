@@ -1,9 +1,59 @@
 ﻿@model PAR_INTRANET.Models.Clases.Empleado
+<link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert2.js"></script>
+@if (Session["Codusr"] == null)
+{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+    <script type="text/javascript">
+        let timerInterval
+        swal({
+            type: 'error',
+            title: 'Sesión Expirada',
+            html: 'Serás redirigido en <strong></strong> milisegundos.',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            heightAuto: false,
+            timer: 8000,
+            onOpen: () => {
+                swal.showLoading()
+                timerInterval = setInterval(() => {
+                    swal.getContent().querySelector('strong')
+                        .textContent = swal.getTimerLeft()
+                }, 100)
+            },
+            onClose: () => {
+                clearInterval(timerInterval);
+                redireccion();
+            }
+        }).then((result) => {
+            if (
+                // Read more about handling dismissals
+                result.dismiss === swal.DismissReason.timer
+            ) {
+                console.log('I was closed by the timer')
+            }
+        })
+
+
+        function redireccion() {
+            window.location.href = "/Login/logueo";
+        }
+
+    </script>
+
+}
+
+
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 
 <div class="col-md-6">
     <div class="box box-info">
@@ -12,16 +62,17 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form class="form-horizontal" action="@Url.Action("Create","Empleado")" method="post">
+        @using (Html.BeginForm("Create", "Empleado", FormMethod.Post, new { @id = "empleCreate", role = "form", enctype = "multipart/form-data", onsubmit = "Mensaje()", @class = "form-horizontal" }))
+        {
             @Html.AntiForgeryToken()
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
             <div class="box-body">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })
 
                     <div class="col-sm-10">
                         @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Legajo, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(m => m.Legajo, "", new { @class = "text-danger  " })
                     </div>
                 </div>
                 <div class="form-group">
@@ -29,14 +80,14 @@
 
                     <div class="col-sm-10">
                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger  " })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "col-sm-2 control-label" })
                     <div class="col-sm-10">
                         @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger  " })
                     </div>
                 </div>
 
@@ -44,27 +95,27 @@
                     @Html.LabelFor(model => model.Cuil, htmlAttributes: new { @class = "col-sm-2 control-label" })
                     <div class="col-sm-10">
                         @Html.EditorFor(model => model.Cuil, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Cuil, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(m => m.Cuil, "", new { @class = "text-danger  " })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.FuncionP, "FuncionP", htmlAttributes: new { @class = "col-sm-2 control-label" })
                     <div class="col-sm-10">
-                        @Html.DropDownList("FuncionP", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.FuncionP, "", new { @class = "text-danger" })
-+
+                        @Html.DropDownList("FuncionP", null, htmlAttributes: new { @id = "funcion1", @class = "form-control" })
+
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.FuncionS, "FuncionS", htmlAttributes: new { @class = "col-sm-2 control-label" })
                     <div class="col-sm-10">
-                        @Html.DropDownList("FuncionS", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("FuncionS", null, htmlAttributes: new { @id = "funcion2", @class = "form-control" })
                     </div>
                 </div>
 
-                <div class="form-group">
+
+                <div id="codvendedor" class="form-group">
                     @Html.LabelFor(model => model.CodVen, htmlAttributes: new { @class = "col-sm-2 control-label" })
                     <div class="col-sm-10">
                         @Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "form-control" } })
@@ -72,20 +123,67 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CodSuc, "CodSuc", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    @Html.LabelFor(model => model.CodSuc, htmlAttributes: new { @class = "col-sm-2 control-label" })
                     <div class="col-sm-10">
                         @Html.DropDownList("CodSuc", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.CodSuc, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
 
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
+                <input type="button" name="Cancelar" value="Cancelar" class="btn btn-danger" onClick="location.href='/Empleado/Index'">
                 <!--<button type="submit" class="btn btn-default">Cancelar</button>-->
                 <button type="submit" class="btn btn-info pull-right">Crear Empleado</button>
             </div>
             <!-- /.box-footer -->
-        </form>
+        }
     </div>
 </div>
+
+
+<script type="text/javascript">
+    function Mensaje() {
+        swal({
+            heightAuto: false,
+            position: 'top-end',
+            type: 'success',
+            title: 'Empleado Agregado',
+            showConfirmButton: false,
+            timer: 4000
+        })
+
+        return true;
+    }
+
+    var select1 = document.getElementById('funcion1');
+    var select2 = document.getElementById('funcion2');
+
+    select1.addEventListener('change',
+        function () {
+            var selectedOption1 = this.options[select1.selectedIndex];
+            if ((selectedOption1.value == 5) || (this.options[select2.selectedIndex].value == 5)) {
+                $("#codvendedor").show();
+            } else {
+                $("#codvendedor").hide();
+            }
+        });
+
+
+    select2.addEventListener('change',
+        function () {
+            var selectedOption2 = this.options[select2.selectedIndex];
+            if ((selectedOption2.value == 5) || (this.options[select1.selectedIndex].value == 5)) {
+                $("#codvendedor").show();
+            } else {
+                $("#codvendedor").hide();
+            }
+        });
+
+
+</script>
+
+
+
+

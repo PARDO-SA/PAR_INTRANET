@@ -12,6 +12,7 @@ namespace PAR_INTRANET.Models.Clases
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required]
         [Display(Name = "Legajo")]
         public int Legajo { get; set; }
 
