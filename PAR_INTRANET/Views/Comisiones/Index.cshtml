@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h3>Trabajar con Comisiones</h3>
 
-<table id="tablaComi" class="cell-border display compact" cellspacing="0">
+<table id="tablaComi" class="cell-border display nowrap" cellspacing="0">
     <thead>
         <tr>
             <th>
@@ -58,9 +58,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdFuncion)
             </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
         </tr>
     </thead>
-
     <tbody>
         @foreach (var item in Model)
         {
@@ -113,7 +121,21 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IdFuncion)
             </td>
-
+            <td>
+                <a href='@Url.Action("Details", "Comisiones" ,new { id = item.IdComi })'>
+                    <img src="~/Content/img/detalle1.png" title="Ver" width="20" height="20" />
+                </a>
+            </td>
+            <td>
+                <a href='@Url.Action("Edit", "Comisiones" ,new { id = item.IdComi })'>
+                    <img src="~/Content/img/editar.png" title="Editar" width="20" height="20" />
+                </a>
+            </td>
+            <td>
+                <a href='@Url.Action("Delete", "Comisiones" ,new { id = item.IdComi })'>
+                    <img src="~/Content/img/Baja.png" title="Borrar" width="20" height="20" />
+                </a>
+            </td>
         </tr>
         }
     </tbody>

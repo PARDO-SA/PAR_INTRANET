@@ -50,7 +50,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 align="center">TRABAJAR CON EMPLEADOS</h2>
+<h3>Trabajar con Empleados</h3>
 
 <table id="tabla" class="cell-border display compact" cellspacing="0">
     <thead>
@@ -79,7 +79,6 @@
             <th>
 
             </th>
-
         </tr>
     </thead>
 
@@ -102,7 +101,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FuncionPri.Descripcion)
                 </td>
-
                 <td>
                     <a href='@Url.Action("Details", "Empleado" ,new { id = item.Legajo })'>
                         <img src="~/Content/img/detalle1.png" title="Ver" width="20" height="20" />
