@@ -71,6 +71,9 @@
                 @Html.DisplayNameFor(model => model.FuncionPri.Descripcion)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Inactivo)
+            </th>
+            <th>
 
             </th>
             <th>
@@ -85,39 +88,49 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Legajo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sucursal.Dessuc)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FuncionPri.Descripcion)
-                </td>
-                <td>
-                    <a href='@Url.Action("Details", "Empleado" ,new { id = item.Legajo })'>
-                        <img src="~/Content/img/detalle1.png" title="Ver" width="20" height="20" />
-                    </a>
-                </td>
-                <td>
-                    <a href='@Url.Action("Edit", "Empleado" ,new {id = item.Legajo})'>
-                        <img src="~/Content/img/editar.png" title="Editar" width="20" height="20" />
-                    </a>
-                </td>
-                <td>
-                    <a href='@Url.Action("Delete", "Empleado" ,new {id = item.Legajo})'>
-                        <img src="~/Content/img/Baja.png" title="Borrar" width="20" height="20" />
-                    </a>
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Legajo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sucursal.Dessuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionPri.Descripcion)
+            </td>
+            <td>
+                @if (item.Inactivo == false)
+                {
+                <P>ACTIVO</P>
+                }
+                else
+                {
+                <p>INACTIVO</p>
+                }
+            </td>
+            <td>
+                <a href='@Url.Action("Details", "Empleado" ,new { id = item.Legajo })'>
+                    <img src="~/Content/img/detalle1.png" title="Ver" width="20" height="20" />
+                </a>
+            </td>
+            <td>
+                <a href='@Url.Action("Edit", "Empleado" ,new {id = item.Legajo})'>
+                    <img src="~/Content/img/editar.png" title="Editar" width="20" height="20" />
+                </a>
+            </td>
+            <td>
+                <a href='@Url.Action("Delete", "Empleado" ,new {id = item.Legajo})'>
+                    <img src="~/Content/img/Baja.png" title="Borrar" width="20" height="20" />
+                </a>
+            </td>
 
-            </tr>
+        </tr>
         }
     </tbody>
 </table>
