@@ -28,6 +28,7 @@ namespace PAR_INTRANET.Models.Clases
 
         [Display(Name = "Cod. Vendedor")]
         [StringLength(4)]
+        [CodVenEmpleValidator("FuncionP","FuncionS", ErrorMessage = "Se debe ingresar un valor, ya que una de sus funciones es Vendedor")]
         public string CodVen { get; set; }
 
         [Required]
