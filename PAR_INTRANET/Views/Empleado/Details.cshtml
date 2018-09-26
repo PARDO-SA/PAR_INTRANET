@@ -59,82 +59,75 @@
             <div class="form-horizontal">
                 <div class="box-body">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        @Html.LabelFor(m => m.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })
 
                         <div class="col-sm-10">
-                            @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                            @Html.ValidationMessageFor(model => model.Legajo, "", new { @class = "text-danger  " })
+                            @Html.DisplayFor(m => m.Legajo, new { htmlAttributes = new { @class = "form-control"} })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "col-sm-2 control-label" })
 
                         <div class="col-sm-10">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger  " })
+                            @Html.DisplayFor(m => m.Email, new { htmlAttributes = new { @class = "form-control"} })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        @Html.LabelFor(m => m.Nombre, htmlAttributes: new { @class = "col-sm-2 control-label" })
                         <div class="col-sm-10">
-                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger  " })
+                            @Html.DisplayFor(m => m.Nombre, new { htmlAttributes = new { @class = "form-control"} })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Cuil, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        @Html.LabelFor(m => m.Cuil, htmlAttributes: new { @class = "col-sm-2 control-label" })
                         <div class="col-sm-10">
-                            @Html.EditorFor(model => model.Cuil, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                            @Html.ValidationMessageFor(model => model.Cuil, "", new { @class = "text-danger  " })
+                            @Html.DisplayFor(m => m.Cuil, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.FuncionP, "FuncionP", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        @Html.LabelFor(m => m.FuncionP, "FuncionP", htmlAttributes: new { @class = "col-sm-2 control-label" })
                         <div class="col-sm-10">
-                            @Html.EditorFor(model => model.FuncionPri.Descripcion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.DisplayFor(m => m.FuncionPri.Descripcion, new { htmlAttributes = new { @class = "form-control"} })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.FuncionS, "FuncionS", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        @Html.LabelFor(m => m.FuncionS, "FuncionS", htmlAttributes: new { @class = "col-sm-2 control-label" })
                         <div class="col-sm-10">
-                            @Html.EditorFor(model => model.FuncionSec.Descripcion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.DisplayFor(m => m.FuncionSec.Descripcion, new { htmlAttributes = new { @class = "form-control"} })
                         </div>
                     </div>
 
 
                     <div id="codvendedor" class="form-group">
-                        @Html.LabelFor(model => model.CodVen, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        @Html.LabelFor(m => m.CodVen, htmlAttributes: new { @class = "col-sm-2 control-label" })
                         <div class="col-sm-10">
-                            @Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.DisplayFor(m => m.CodVen, new { htmlAttributes = new { @class = "form-control"} })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.CodSuc, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        @Html.LabelFor(m => m.CodSuc, htmlAttributes: new { @class = "col-sm-2 control-label" })
                         <div class="col-sm-10">
-                            @Html.EditorFor(model => model.Sucursal.Dessuc, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.DisplayFor(m => m.Sucursal.Dessuc, new { htmlAttributes = new { @class = "form-control"} })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                        @Html.LabelFor(m => m.Inactivo, htmlAttributes: new { @class = "col-sm-2 control-label" })
                         <div class="col-sm-10">
                             @if (Model.Inactivo == false)
                             {
-                                @Html.Editor("activo", new { htmlAttributes = new { @class = "input_tabla_activo", @readonly = "readonly" } })
+                                @Html.Editor("activo", new { htmlAttributes = new { @class = "input_tabla_activo"} })
                             }
                             else
                             {
-                                @Html.Editor("inactivo", new { htmlAttributes = new { @class = "input_tabla_inactivo", @readonly = "readonly" } })
+                                @Html.Editor("inactivo", new { htmlAttributes = new { @class = "input_tabla_inactivo"} })
                             }
                         </div>
                     </div>
-
-
-
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
