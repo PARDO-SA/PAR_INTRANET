@@ -65,7 +65,6 @@
         @using (Html.BeginForm("Create", "Empleado", FormMethod.Post, new { @id = "empleCreate", role = "form", enctype = "multipart/form-data", onsubmit = "Mensaje()", @class = "form-horizontal" }))
         {
             @Html.AntiForgeryToken()
-            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
             <div class="box-body">
                 <div class="form-group">
                     @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })

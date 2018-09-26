@@ -1838,7 +1838,6 @@
     <Content Include="Views\Empleado\Index.cshtml" />
     <Content Include="Views\Empleado\Details.cshtml" />
     <Content Include="Views\Empleado\Delete.cshtml" />
-    <Content Include="Views\Empleado\Edit.cshtml" />
     <Content Include="Views\Sweet\Alert.cshtml" />
     <Content Include="Views\Empleado\Create.cshtml" />
     <Content Include="Views\Comisiones\Create.cshtml" />
@@ -1846,6 +1845,7 @@
     <Content Include="Views\Comisiones\Details.cshtml" />
     <Content Include="Views\Comisiones\Edit.cshtml" />
     <Content Include="Views\Comisiones\Index.cshtml" />
+    <Content Include="Views\Empleado\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

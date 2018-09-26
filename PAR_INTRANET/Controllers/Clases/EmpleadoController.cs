@@ -100,10 +100,11 @@ namespace PAR_INTRANET.Controllers.Clases
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Legajo,Email,Nombre,CodVen,CodSuc,FuncionP,FuncionS,Inactivo")] Empleado empleado)
+        public ActionResult Edit([Bind(Include = "Legajo,Email,Nombre,Cuil,FuncionP,FuncionS,CodVen,CodSuc,Inactivo")] Empleado empleado)
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(empleado).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -1,12 +1,11 @@
 ﻿@model PAR_INTRANET.Models.Clases.Empleado
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
 <script src="~/Scripts/sweetalert2.js"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
 @if (Session["Codusr"] == null)
 {
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-
-
     <script type="text/javascript">
         let timerInterval
         swal({
@@ -59,19 +58,19 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        @using (Html.BeginForm("Edit", "Empleado", FormMethod.Post, new { @id = "empleEdit", role = "form", enctype = "multipart/form-data", onsubmit = "Mensaje()", @class = "form-horizontal" }))
+        @using (Html.BeginForm("Edit", "Empleado", FormMethod.Post, new { @id = "empleEdit", role = "form", enctype = "multipart/form-data", @class = "form-horizontal" }))
         {
             @Html.AntiForgeryToken()
-            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
         <div class="box-body">
             <div class="form-group">
                 @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })
 
                 <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.Legajo, "", new { @class = "text-danger  " })
                 </div>
             </div>
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-2 control-label" })
 
@@ -113,11 +112,11 @@
                 </div>
             </div>
 
-
             <div id="codvendedor" class="form-group">
                 @Html.LabelFor(model => model.CodVen, htmlAttributes: new { @class = "col-sm-2 control-label" })
                 <div class="col-sm-10">
                     @Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CodVen, "", new { @class = "text-danger  " })
                 </div>
             </div>
 
@@ -128,31 +127,74 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    <div class="btn_formgroup" id="status" data-toggle="buttons">
+                        @if (Model.Inactivo == false)
+                        {
+                            <label class="btn btn-default btn-on btn-xs active">
+                                @Html.RadioButtonFor(model => model.Inactivo, "false") ACTIVO
+                            </label>
+                            <label class="btn btn-default btn-off btn-xs ">
+                                @Html.RadioButtonFor(model => model.Inactivo, "true") INACTIVO
+                            </label>
+                        }
+                        else
+                        {
+                            <label class="btn btn-default btn-on btn-xs ">
+                                @Html.RadioButtonFor(model => model.Inactivo, "false") ACTIVO
+                            </label>
+                            <label class="btn btn-default btn-off btn-xs active ">
+                                @Html.RadioButtonFor(model => model.Inactivo, "true") INACTIVO
+                            </label>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
             <!-- /.box-body -->
             <div class="box-footer">
                 <input type="button" name="Cancelar" value="Cancelar" class="btn btn-danger" onClick="location.href='/Empleado/Index'">
                 <!--<button type="submit" class="btn btn-default">Cancelar</button>-->
-                <button type="submit" class="btn btn-info pull-right">Editar Empleado</button>
+                <input type="submit" value="Aplicar Cambios" class="btn btn-info pull-right" />
             </div>
             <!-- /.box-footer -->
         }
     </div>
 </div>
 
-<script type="text/javascript">
-    function Mensaje() {
-        swal({
-            heightAuto: false,
-            position: 'top-end',
-            type: 'success',
-            title: 'Empleado Editado',
-            showConfirmButton: false,
-            timer: 4000
-        })
 
-        return true;
-    }
+
+<script type="text/javascript">
+    $("#empleEdit").submit(function(e) {
+        e.preventDefault();
+        var form = this;
+        swal({
+            title: 'Estas Seguro?',
+            text: "Modificar Información de Empleado!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Modificar!'
+        }).then((result) => {
+            if (result.value) {
+                swal({
+                    title: 'Modificado!',
+                    text: 'Empleado Modificado',
+                    heightAuto: false,
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 8000
+                });
+                form.submit();
+            }
+        })
+    });
+</script>
+
+<script type="text/javascript">
 
     var select1 = document.getElementById('funcion1');
     var select2 = document.getElementById('funcion2');
