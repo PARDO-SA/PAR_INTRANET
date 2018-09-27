@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<PAR_INTRANET.Models.Clases.Empleado>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/sweetalert2.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
 @if (Session["Codusr"] == null)
 {
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/sweetalert2.js"></script>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
-
     <script type="text/javascript">
         let timerInterval
         swal({
@@ -45,92 +44,134 @@
 
 }
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+@if (TempData.ContainsKey("Empleado_A"))
+{
+        if (TempData["Empleado_A"].ToString() == "1") {
+            <script type="text/javascript">
+                swal({
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                heightAuto: false,
+                position: 'center',
+                type: 'success',
+                title: 'Hecho!',
+                text:'Empleado Agregado Correctamente',
+                showConfirmButton: false,
+                timer: 4000
+            })
+
+    </script>
+    }
 }
 
-<h3>Trabajar con Empleados</h3>
-
-<table id="tabla" class="cell-border display compact" cellspacing="0">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Legajo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sucursal.Dessuc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FuncionPri.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Inactivo)
-            </th>
-            <th>
-
-            </th>
-            <th>
-
-            </th>
-            <th>
-
-            </th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model)
+    @if (TempData.ContainsKey("Empleado_M"))
+    {
+        if (TempData["Empleado_M"].ToString() == "1")
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Legajo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sucursal.Dessuc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FuncionPri.Descripcion)
-            </td>
-            <td>
-                @if (item.Inactivo == false)
-                {
-                <P>ACTIVO</P>
-                }
-                else
-                {
-                <p>INACTIVO</p>
-                }
-            </td>
-            <td>
-                <a href='@Url.Action("Details", "Empleado" ,new { id = item.Legajo })'>
-                    <img src="~/Content/img/detalle1.png" title="Ver" width="20" height="20" />
-                </a>
-            </td>
-            <td>
-                <a href='@Url.Action("Edit", "Empleado" ,new {id = item.Legajo})'>
-                    <img src="~/Content/img/editar.png" title="Editar" width="20" height="20" />
-                </a>
-            </td>
-            <td>
-                <a href='@Url.Action("Delete", "Empleado" ,new {id = item.Legajo})'>
-                    <img src="~/Content/img/Baja.png" title="Borrar" width="20" height="20" />
-                </a>
-            </td>
-
-        </tr>
+        <script type="text/javascript">
+                swal({
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    heightAuto: false,
+                    position: 'center',
+                    type: 'success',
+                    title: 'Hecho!',
+                    text: 'Empleado Editado Correctamente',
+                    showConfirmButton: false,
+                    timer: 4000
+                })
+            
+        </script>
         }
-    </tbody>
-</table>
+    }
+
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h3>Trabajar con Empleados</h3>
+
+    <table id="tabla" class="cell-border display compact" cellspacing="0">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Legajo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sucursal.Dessuc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FuncionPri.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Inactivo)
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Legajo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sucursal.Dessuc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FuncionPri.Descripcion)
+                    </td>
+                    <td>
+                        @if (item.Inactivo == false)
+                        {
+                            <P>ACTIVO</P>
+                        }
+                        else
+                        {
+                            <p>INACTIVO</p>
+                        }
+                    </td>
+                    <td>
+                        <a href='@Url.Action("Details", "Empleado" ,new { id = item.Legajo })'>
+                            <img src="~/Content/img/detalle1.png" title="Ver" width="20" height="20" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href='@Url.Action("Edit", "Empleado" ,new {id = item.Legajo})'>
+                            <img src="~/Content/img/editar.png" title="Editar" width="20" height="20" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href='@Url.Action("Delete", "Empleado" ,new {id = item.Legajo})'>
+                            <img src="~/Content/img/Baja.png" title="Borrar" width="20" height="20" />
+                        </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>

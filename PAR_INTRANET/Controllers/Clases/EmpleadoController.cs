@@ -62,10 +62,25 @@ namespace PAR_INTRANET.Controllers.Clases
         {
             if (ModelState.IsValid)
             {
+                try
+                {
+                    //1-Mostrar Mensaje , 0-No mostrarlo
+                    TempData["Empleado_A"] = "1";
+                    db.Empleados.Add(empleado);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    //1-Mostrar Mensaje , 0-No mostrarlo
+                    TempData["Empleado_A"] = "0";
+                    ViewBag.CodSuc = new SelectList(db.Sucursales, "CodSuc", "dessuc", empleado.CodSuc);
+                    ViewBag.FuncionP = new SelectList(db.Funciones, "id", "descripcion", empleado.FuncionP);
+                    ViewBag.FuncionS = new SelectList(db.Funciones, "id", "descripcion", empleado.FuncionS);
+                    ModelState.AddModelError(string.Empty, "El legajo ya Existe.");
+                    return View(empleado);
+                }
                
-                db.Empleados.Add(empleado);
-                db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
             ViewBag.CodSuc = new SelectList(db.Sucursales, "CodSuc", "dessuc", empleado.CodSuc);
@@ -104,7 +119,8 @@ namespace PAR_INTRANET.Controllers.Clases
         {
             if (ModelState.IsValid)
             {
-
+                //1-Mostrar Mensaje , 0-No mostrarlo
+                TempData["Empleado_M"] = "1";
                 db.Entry(empleado).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

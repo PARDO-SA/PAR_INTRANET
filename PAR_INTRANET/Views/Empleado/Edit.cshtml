@@ -167,34 +167,6 @@
 
 
 <script type="text/javascript">
-    $("#empleEdit").submit(function(e) {
-        e.preventDefault();
-        var form = this;
-        swal({
-            title: 'Estas Seguro?',
-            text: "Modificar Información de Empleado!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, Modificar!'
-        }).then((result) => {
-            if (result.value) {
-                swal({
-                    title: 'Modificado!',
-                    text: 'Empleado Modificado',
-                    heightAuto: false,
-                    type: 'success',
-                    showConfirmButton: false,
-                    timer: 8000
-                });
-                form.submit();
-            }
-        })
-    });
-</script>
-
-<script type="text/javascript">
 
     var select1 = document.getElementById('funcion1');
     var select2 = document.getElementById('funcion2');
@@ -209,6 +181,17 @@
             }
         });
 
+    select1.addEventListener('loadeddata',
+        function () {
+            var selectedOption1 = this.options[select1.selectedIndex];
+            if ((selectedOption1.value == 5) || (this.options[select2.selectedIndex].value == 5)) {
+                $("#codvendedor").show();
+            } else {
+                $("#codvendedor").hide();
+            }
+        });
+
+
 
     select2.addEventListener('change',
         function () {
@@ -220,9 +203,15 @@
             }
         });
 
+    select2.addEventListener('loadeddata',
+        function () {
+            var selectedOption2 = this.options[select2.selectedIndex];
+            if ((selectedOption2.value == 5) || (this.options[select1.selectedIndex].value == 5)) {
+                $("#codvendedor").show();
+            } else {
+                $("#codvendedor").hide();
+            }
+        });
+
 </script>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/custom-validator")
-}
