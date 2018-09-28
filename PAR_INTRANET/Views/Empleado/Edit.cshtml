@@ -45,6 +45,14 @@
 
 }
 
+<!--Oculto el cod vendedor si la funcion es distinta de vendeodr-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (($("#funcion1").val() != 5) && ($("#funcion2").val() != 5)) { 
+                $(codvendedor).hide();
+            }
+        });      
+    </script>
 
 @{
     ViewBag.Title = "Edit";
@@ -171,6 +179,7 @@
     var select1 = document.getElementById('funcion1');
     var select2 = document.getElementById('funcion2');
 
+
     select1.addEventListener('change',
         function () {
             var selectedOption1 = this.options[select1.selectedIndex];
@@ -180,17 +189,6 @@
                 $("#codvendedor").hide();
             }
         });
-
-    select1.addEventListener('loadeddata',
-        function () {
-            var selectedOption1 = this.options[select1.selectedIndex];
-            if ((selectedOption1.value == 5) || (this.options[select2.selectedIndex].value == 5)) {
-                $("#codvendedor").show();
-            } else {
-                $("#codvendedor").hide();
-            }
-        });
-
 
 
     select2.addEventListener('change',
@@ -203,15 +201,7 @@
             }
         });
 
-    select2.addEventListener('loadeddata',
-        function () {
-            var selectedOption2 = this.options[select2.selectedIndex];
-            if ((selectedOption2.value == 5) || (this.options[select1.selectedIndex].value == 5)) {
-                $("#codvendedor").show();
-            } else {
-                $("#codvendedor").hide();
-            }
-        });
 
-</script>
+
+    </script>
 

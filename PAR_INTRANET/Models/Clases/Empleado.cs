@@ -33,7 +33,6 @@ namespace PAR_INTRANET.Models.Clases
 
         [Required]
         [Display(Name = "Cuil")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:00-00000000-0}")]
         public long Cuil { get; set; }
 
         [Required]

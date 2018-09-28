@@ -187,3 +187,19 @@
     background-color: transparent;
     opacity: 0.3;
 }
+
+/*Texto para Index Empleado*/
+.text-activo{
+    color:limegreen;
+    text-align:center;
+    vertical-align:central;
+    font-weight:bold;
+}
+
+/*Texto para Index Empleado*/
+.text-inactivo {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: central;
+}
