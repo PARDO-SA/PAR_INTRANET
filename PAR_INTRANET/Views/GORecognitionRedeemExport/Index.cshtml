@@ -1,0 +1,98 @@
+﻿@model IEnumerable<PAR_INTRANET.Models.GORecognition.GORecognitionRedeemExport>
+@{
+    ViewBag.Title = "Importar CSV - Canjes";
+}
+
+<h2>Importar CSV - Canjes</h2>
+
+<p>
+    @using (Html.BeginForm("Index", "GORecognitionRedeemExport", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" name="postedFile" />  <input type="checkbox" id="encabezados"/> <br/>
+        <input type="submit" value="Leer Archivo" />
+    }
+</p>
+
+    @if (Model.Count() > 0)
+    {
+        <hr />
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Detalle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cantidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Puntos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Documento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApellidoNombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contacto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Importar)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (GORecognitionRedeemExport item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Detalle)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Tipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Puntos)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Documento)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ApellidoNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Contacto)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Importar)
+                </td>
+                <td></td>
+            </tr>
+            }
+        </table>
+    }

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PAR_INTRANET.Models.Clases.ComisionesBP>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaRec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImporteRec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodCli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesArt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Porcentaje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImporteArt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComisionVen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComisionSuc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Periodo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vendedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaRec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImporteRec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodCli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesArt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Porcentaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImporteArt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComisionVen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComisionSuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Periodo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

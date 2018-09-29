@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PAR_INTRANET.Models.Vistas.ViewResumenComisionesBP>
+
+@{
+    ViewBag.Title = "Resumen";
+}
+
+<table>
+    <tr>
+        <td width="50%"><h2>Resumen Comisiones Blister Pack</h2></td>
+        <td width="30%"></td>
+        <td width="18%">
+            @if (Session["Codusr"] != null)
+    {
+        <h5>Bienvenido @Session["Nomusr"].ToString() </h5>
+}
+     
+        </td>
+        <td width="2%"> @Html.ActionLink("Salir","Salir", "Login")</td>
+    </tr>
+</table>
+
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        Período: @Html.DropDownList("periodo", "Seleccione Un Período")
+        Sucursal: @Html.DropDownList("sucursal", "Todas")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sucursal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Puntos)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sucursal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.Puntos)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td>Total</td>
+            <td></td>
+            <td align="right">@(((Int32)ViewBag.Total).ToString("N0"))</td>
+        </tr>
+    </tfoot>
+
+</table>

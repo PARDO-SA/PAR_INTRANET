@@ -1,0 +1,104 @@
+﻿@model MVC_Prueba.Models.Clases.ComisionesBP
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ComisionesBP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vendedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vendedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImporteRec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImporteRec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesArt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesArt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Porcentaje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Porcentaje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImporteArt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImporteArt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComisionVen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComisionVen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComisionSuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComisionSuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Periodo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Periodo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

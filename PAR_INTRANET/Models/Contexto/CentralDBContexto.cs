@@ -19,5 +19,7 @@ namespace PAR_INTRANET.Models.Contexto
         public DbSet<Marca> Marcas { get; set; }
         public DbSet<Rubro> Rubros { get; set; }
         public DbSet<SubRubro> SubRubros { get; set; }
+
+        public DbSet<ComisionesBP> ComisionesBPs { get; set; }
     }
 }

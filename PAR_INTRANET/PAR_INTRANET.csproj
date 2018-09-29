@@ -155,6 +155,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Clases\ComisionesController.cs" />
     <Compile Include="Controllers\Clases\EmpleadoController.cs" />
+    <Compile Include="Controllers\Clases\ComisionesBPController.cs" />
+    <Compile Include="Controllers\GORecognition\GORecognitionRedeemExportController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SweetController.cs" />
@@ -163,6 +165,7 @@
     </Compile>
     <Compile Include="Models\Clases\Comision.cs" />
     <Compile Include="Models\Clases\ComisionArticulo.cs" />
+    <Compile Include="Models\Clases\ComisionesBP.cs" />
     <Compile Include="Models\Clases\Empleado.cs" />
     <Compile Include="Models\Clases\Funcion.cs" />
     <Compile Include="Models\Clases\FuncionComi.cs" />
@@ -173,7 +176,9 @@
     <Compile Include="Models\Clases\Validaciones.cs" />
     <Compile Include="Models\Contexto\CentralDBContexto.cs" />
     <Compile Include="Models\Contexto\SistemaDBContexto.cs" />
+    <Compile Include="Models\GORecognition\GORecognitionRedeemExport.cs" />
     <Compile Include="Models\Login\Usuario.cs" />
+    <Compile Include="Models\Vistas\ViewResumenComisionesBP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1846,9 +1851,17 @@
     <Content Include="Views\Comisiones\Details.cshtml" />
     <Content Include="Views\Comisiones\Edit.cshtml" />
     <Content Include="Views\Comisiones\Index.cshtml" />
+    <Content Include="Views\ComisionesBP\Create.cshtml" />
+    <Content Include="Views\ComisionesBP\Delete.cshtml" />
+    <Content Include="Views\ComisionesBP\Details.cshtml" />
+    <Content Include="Views\ComisionesBP\Edit.cshtml" />
+    <Content Include="Views\ComisionesBP\Index.cshtml" />
+    <Content Include="Views\ComisionesBP\Resumen.cshtml" />
+    <Content Include="Views\GORecognitionRedeemExport\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Vistas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
