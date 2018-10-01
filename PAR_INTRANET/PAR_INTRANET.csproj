@@ -163,13 +163,13 @@
     </Compile>
     <Compile Include="Models\Clases\Comision.cs" />
     <Compile Include="Models\Clases\ComisionArticulo.cs" />
-    <Compile Include="Models\Clases\Empleado.cs" />
-    <Compile Include="Models\Clases\Funcion.cs" />
+    <Compile Include="Models\Clases\Tablas\Empleado.cs" />
+    <Compile Include="Models\Clases\Tablas\Funcion.cs" />
     <Compile Include="Models\Clases\FuncionComi.cs" />
     <Compile Include="Models\Clases\Marca.cs" />
     <Compile Include="Models\Clases\Rubro.cs" />
     <Compile Include="Models\Clases\SubRubro.cs" />
-    <Compile Include="Models\Clases\Sucursal.cs" />
+    <Compile Include="Models\Clases\Tablas\Sucursal.cs" />
     <Compile Include="Models\Clases\Validaciones.cs" />
     <Compile Include="Models\Contexto\CentralDBContexto.cs" />
     <Compile Include="Models\Contexto\SistemaDBContexto.cs" />

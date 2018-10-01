@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace PAR_INTRANET.Models.Clases
+namespace PAR_INTRANET.Models.Clases.Tablas
 {
     [Table("Sucur")]
     public class Sucursal

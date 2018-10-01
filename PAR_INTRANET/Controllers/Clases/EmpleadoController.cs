@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using PAR_INTRANET.Models.Clases;
+using PAR_INTRANET.Models.Clases.Tablas;
 using PAR_INTRANET.Models.Contexto;
 
 namespace PAR_INTRANET.Controllers.Clases

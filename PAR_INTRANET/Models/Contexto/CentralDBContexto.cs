@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using PAR_INTRANET.Models.Clases;
+using PAR_INTRANET.Models.Clases.Tablas;
 
 namespace PAR_INTRANET.Models.Contexto
 {
