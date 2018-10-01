@@ -162,7 +162,17 @@ desired effect
                             <li><a href="/Comisiones/index">COMISIONES</a></li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Acerca de", "Acerca de", "Inicio") </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-th-list"></i> <span>CANJES</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Empleado/index">HISTÓRICO</a></li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Contacto", "Contacto", "Inicio") </li>
 
                 </ul>
