@@ -165,7 +165,7 @@
     </Compile>
     <Compile Include="Models\Clases\Comision.cs" />
     <Compile Include="Models\Clases\ComisionArticulo.cs" />
-    <Compile Include="Models\Clases\ComisionesBP.cs" />
+    <Compile Include="Models\Clases\Canjes\ComisionesBP.cs" />
     <Compile Include="Models\Clases\Empleado.cs" />
     <Compile Include="Models\Clases\Funcion.cs" />
     <Compile Include="Models\Clases\FuncionComi.cs" />
@@ -1862,7 +1862,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Vistas\" />
-    <Folder Include="Models\Clases\Canjes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
