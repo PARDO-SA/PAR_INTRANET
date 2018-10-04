@@ -5,7 +5,6 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace PAR_INTRANET.Models.Clases
 {
     [Table("NivArt1")]

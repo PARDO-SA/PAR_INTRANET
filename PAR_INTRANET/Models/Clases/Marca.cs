@@ -17,7 +17,7 @@ namespace PAR_INTRANET.Models.Clases
         [Key]
         [Column(Order = 1)]
         [StringLength(10)]
-        public string CodeleRefArt { get; set; }
+        public string CodEleRefArt { get; set; }
 
         [StringLength(30)]
         public string DesEleRefArt { get; set; }

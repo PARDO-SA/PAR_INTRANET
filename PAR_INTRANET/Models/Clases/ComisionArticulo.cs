@@ -17,11 +17,13 @@ namespace PAR_INTRANET.Models.Clases
         [Key]
         [Column(Order=1)]
         [StringLength(20)]
+        [ForeignKey("Articulo")]
         public string CodArtComi { get; set; }
 
         [RegularExpression("EIei")]
         [StringLength(1)]
         public string Tipo { get; set; }
 
+        public virtual Articulo Articulo { get; set; }
     }
 }

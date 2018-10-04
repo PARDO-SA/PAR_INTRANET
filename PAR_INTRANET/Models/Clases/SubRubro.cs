@@ -21,7 +21,7 @@ namespace PAR_INTRANET.Models.Clases
         public string CodNivArt2 { get; set; }
 
         [StringLength(30)]
-        public string DesNivArt1 { get; set; }
+        public string DesNivArt2 { get; set; }
 
         public bool Inactivo { get; }
     }

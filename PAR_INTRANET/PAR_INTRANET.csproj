@@ -153,6 +153,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Clases\ComisionesController.cs" />
     <Compile Include="Controllers\Clases\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Clases\Articulo.cs" />
     <Compile Include="Models\Clases\Comision.cs" />
     <Compile Include="Models\Clases\ComisionArticulo.cs" />
     <Compile Include="Models\Clases\Empleado.cs" />

@@ -27,19 +27,25 @@ namespace PAR_INTRANET.Models.Clases
 
         [Display(Name = "Rubro")]
         [StringLength(3)]
-        public string CodNivArt1Comi { get; set; }
+        [Column("CodNivArt1Comi")]
+        [ForeignKey("Rubro")]
+        public string CodNivArt1 { get; set; }
 
         [Display(Name = "SubRubro")]
         [StringLength(3)]
-        public string CodNivArt2Comi { get; set; }
+        [Column("CodNivArt2Comi")]
+        [ForeignKey("SubRubro")]
+        public string CodNivArt2 { get; set; }
 
         [ScaffoldColumn(false)]
         [StringLength(3)]
-        public string CodNivArt3Comi { get; set; }
+        [Column("CodNivArt3Comi")]
+        public string CodNivArt3 { get; set; }
 
         [Display(Name = "Marca")]
         [StringLength(10)]
-        public string MarcaComi { get; set; }
+        [Column("MarcaComi")]
+        public string CodEleRefArt { get; set; }
 
         [Display(Name = "Incluye Artículos")]
         public bool ArtIncComi { get; set; }
@@ -74,9 +80,9 @@ namespace PAR_INTRANET.Models.Clases
         public List<ComisionArticulo> ArticulosInc { get; set; }
         public List<ComisionArticulo> ArticulosExc { get; set; }
 
-        public virtual Rubro Rubro { get; }
-        public virtual SubRubro SubRubro { get; }
-        public virtual Marca Marca { get; }
+        public virtual Rubro Rubro { get; set; }
+        public virtual SubRubro SubRubro { get; set; }
+        //public virtual Marca Marca { get; set; }
         public virtual FuncionComi FuncionComi { get; set; }
     }
 }
