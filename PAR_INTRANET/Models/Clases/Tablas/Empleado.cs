@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PAR_INTRANET.Models.Clases.Tablas
 {
-    [Table("PAR_EMPLE1")]
+    [Table("PAR_EMPLE")]
     public class Empleado
     {
         [Key]
