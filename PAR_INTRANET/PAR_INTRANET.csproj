@@ -176,9 +176,9 @@
     <Compile Include="Models\Clases\Validaciones.cs" />
     <Compile Include="Models\Contexto\CentralDBContexto.cs" />
     <Compile Include="Models\Contexto\SistemaDBContexto.cs" />
-    <Compile Include="Models\GORecognition\GORecognitionRedeemExport.cs" />
+    <Compile Include="Models\Clases\Canjes\GORecognitionRedeemExport.cs" />
     <Compile Include="Models\Login\Usuario.cs" />
-    <Compile Include="Models\Vistas\ViewResumenComisionesBP.cs" />
+    <Compile Include="Models\Clases\Canjes\ViewResumenComisionesBP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1862,6 +1862,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Vistas\" />
+    <Folder Include="Models\Clases\Canjes\Historico\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
