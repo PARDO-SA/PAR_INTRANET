@@ -36,6 +36,9 @@ namespace PAR_INTRANET
                 "~/Scripts/buttons.html5.min.js",
                 "~/Scripts/buttons.print.min.js",
                 "~/Scripts/bootstrap.js",
+                "~/admin-lte/js/adminlte.js",
+                "~/admin-lte/plugins/iCheck/icheck.js",
+                "~/admin-lte/plugins/fastclick/fastclick.js",
                 "~/Scripts/respond.js",
                 "~/Scripts/table.js"      
                 ));
@@ -47,11 +50,6 @@ namespace PAR_INTRANET
                       "~/Content/custom.css",
                       "~/admin-lte/css/AdminLTE.css",
                       "~/admin-lte/css/skins/skin-blue.css"));
-
-            bundles.Add(new ScriptBundle("~/admin-lte/js").Include(
-          "~/admin-lte/js/adminlte.js",
-          "~/admin-lte/plugins/iCheck/icheck.js",
-          "~/admin-lte/plugins/fastclick/fastclick.js"));
          
         }
     }
