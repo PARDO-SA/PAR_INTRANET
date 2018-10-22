@@ -18,7 +18,7 @@ namespace PAR_INTRANET.Controllers.Clases
         // GET: Comisiones
         public ActionResult Index()
         {
-            var comisiones = db.Comisiones; //.Include(c => c.FuncionComi);
+            var comisiones = db.Comisiones.Include(c => c.FuncionComi).Include(c => c.Marca).Include(c => c.Rubro).Include(c => c.SubRubro);
             return View(comisiones.ToList());
         }
 
@@ -41,8 +41,9 @@ namespace PAR_INTRANET.Controllers.Clases
         public ActionResult Create()
         {
             ViewBag.IdFuncion = new SelectList(db.FuncionesComisiones, "IdFuncion", "DesFuncion");
+            ViewBag.CodRefArt = new SelectList(db.Marcas, "CodRefArt", "DesEleRefArt");
             ViewBag.CodNivArt1 = new SelectList(db.Rubros, "CodNivArt1", "DesNivArt1");
-            ViewBag.CodEleRefArt = new SelectList(db.Marcas, "CodEleRefArt", "DesEleRefArt");
+            ViewBag.CodNivArt1 = new SelectList(db.SubRubros, "CodNivArt1", "DesNivArt2");
             return View();
         }
 
@@ -51,7 +52,7 @@ namespace PAR_INTRANET.Controllers.Clases
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdComi,DesComi,FecVigDesComi,FecVigHasComi,CodNivArt1,CodNivArt2,CodNivArt3,CodeleRefArt,ArtIncComi,ArtExcComi,VendeComi,ImpComi,PorComi,RestoComi,ImpRestoComi,PorRestoComi,Inactivo,IdFuncion")] Comision comision)
+        public ActionResult Create([Bind(Include = "IdComi,DesComi,FecVigDesComi,FecVigHasComi,CodNivArt1,CodNivArt2,CodNivArt3,CodEleRefArt,ArtIncComi,ArtExcComi,VendeComi,ImpComi,PorComi,RestoComi,ImpRestoComi,PorRestoComi,Inactivo,IdFuncion,CodRefArt")] Comision comision)
         {
             if (ModelState.IsValid)
             {
@@ -61,9 +62,9 @@ namespace PAR_INTRANET.Controllers.Clases
             }
 
             ViewBag.IdFuncion = new SelectList(db.FuncionesComisiones, "IdFuncion", "DesFuncion", comision.IdFuncion);
+            ViewBag.CodRefArt = new SelectList(db.Marcas, "CodRefArt", "DesEleRefArt", comision.CodRefArt);
             ViewBag.CodNivArt1 = new SelectList(db.Rubros, "CodNivArt1", "DesNivArt1", comision.CodNivArt1);
-            ViewBag.CodEleRefArt = new SelectList(db.Marcas, "CodEleRefArt", "DesEleRefArt", comision.CodEleRefArt);
-
+            ViewBag.CodNivArt1 = new SelectList(db.SubRubros, "CodNivArt1", "DesNivArt2", comision.CodNivArt1);
             return View(comision);
         }
 
@@ -80,8 +81,9 @@ namespace PAR_INTRANET.Controllers.Clases
                 return HttpNotFound();
             }
             ViewBag.IdFuncion = new SelectList(db.FuncionesComisiones, "IdFuncion", "DesFuncion", comision.IdFuncion);
+            ViewBag.CodRefArt = new SelectList(db.Marcas, "CodRefArt", "DesEleRefArt", comision.CodRefArt);
             ViewBag.CodNivArt1 = new SelectList(db.Rubros, "CodNivArt1", "DesNivArt1", comision.CodNivArt1);
-            ViewBag.CodEleRefArt = new SelectList(db.Marcas, "CodEleRefArt", "DesEleRefArt", comision.CodEleRefArt);
+            ViewBag.CodNivArt1 = new SelectList(db.SubRubros, "CodNivArt1", "DesNivArt2", comision.CodNivArt1);
             return View(comision);
         }
 
@@ -90,7 +92,7 @@ namespace PAR_INTRANET.Controllers.Clases
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdComi,DesComi,FecVigDesComi,FecVigHasComi,CodNivArt1,CodNivArt2,CodNivArt3,CodeleRefArt,ArtIncComi,ArtExcComi,VendeComi,ImpComi,PorComi,RestoComi,ImpRestoComi,PorRestoComi,Inactivo,IdFuncion")] Comision comision)
+        public ActionResult Edit([Bind(Include = "IdComi,DesComi,FecVigDesComi,FecVigHasComi,CodNivArt1,CodNivArt2,CodNivArt3,CodEleRefArt,ArtIncComi,ArtExcComi,VendeComi,ImpComi,PorComi,RestoComi,ImpRestoComi,PorRestoComi,Inactivo,IdFuncion,CodRefArt")] Comision comision)
         {
             if (ModelState.IsValid)
             {
@@ -99,8 +101,9 @@ namespace PAR_INTRANET.Controllers.Clases
                 return RedirectToAction("Index");
             }
             ViewBag.IdFuncion = new SelectList(db.FuncionesComisiones, "IdFuncion", "DesFuncion", comision.IdFuncion);
+            ViewBag.CodRefArt = new SelectList(db.Marcas, "CodRefArt", "DesEleRefArt", comision.CodRefArt);
             ViewBag.CodNivArt1 = new SelectList(db.Rubros, "CodNivArt1", "DesNivArt1", comision.CodNivArt1);
-            ViewBag.CodEleRefArt = new SelectList(db.Marcas, "CodEleRefArt", "DesEleRefArt", comision.CodEleRefArt);
+            ViewBag.CodNivArt1 = new SelectList(db.SubRubros, "CodNivArt1", "DesNivArt2", comision.CodNivArt1);
             return View(comision);
         }
 

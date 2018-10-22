@@ -12,7 +12,7 @@ namespace PAR_INTRANET.Models.Clases
     {
         [Key]
         [Column(Order = 0)]
-        public int CodRefArt { get; set; } = 9;
+        public char CodRefArt { get; set; }
 
         [Key]
         [Column(Order = 1)]

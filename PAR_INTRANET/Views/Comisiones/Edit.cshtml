@@ -42,26 +42,26 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CodNivArt1, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CodNivArt1, "CodNivArt1", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CodNivArt1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("CodNivArt1", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CodNivArt1, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CodNivArt2, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CodNivArt2, "CodNivArt2", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CodNivArt2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("CodNivArt2", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CodNivArt2, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CodeleRefArt, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CodEleRefArt, "CodEleRefArt", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CodeleRefArt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CodeleRefArt, "", new { @class = "text-danger" })
+                @Html.DropDownList("CodEleRefArt", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CodEleRefArt, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -152,6 +152,14 @@
             <div class="col-md-10">
                 @Html.DropDownList("IdFuncion", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdFuncion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CodRefArt, "CodRefArt", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CodRefArt", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CodRefArt, "", new { @class = "text-danger" })
             </div>
         </div>
 

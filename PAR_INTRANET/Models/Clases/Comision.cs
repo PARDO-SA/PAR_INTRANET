@@ -28,13 +28,11 @@ namespace PAR_INTRANET.Models.Clases
         [Display(Name = "Rubro")]
         [StringLength(3)]
         [Column("CodNivArt1Comi")]
-        [ForeignKey("Rubro")]
         public string CodNivArt1 { get; set; }
 
         [Display(Name = "SubRubro")]
         [StringLength(3)]
         [Column("CodNivArt2Comi")]
-        [ForeignKey("SubRubro")]
         public string CodNivArt2 { get; set; }
 
         [ScaffoldColumn(false)]
@@ -57,7 +55,7 @@ namespace PAR_INTRANET.Models.Clases
         public bool VendeComi { get; set; }
 
         [Display(Name = "Importe")]
-        public decimal ImpComi { get; set; } 
+        public decimal ImpComi { get; set; }
 
         [Display(Name = "Porcentaje")]
         public decimal PorComi { get; set; }
@@ -77,12 +75,16 @@ namespace PAR_INTRANET.Models.Clases
         [Display(Name = "Función")]
         public int IdFuncion { get; set; }
 
+        [Column("CodRefArtComi")]
+        public char CodRefArt { get; set; }
+
         public List<ComisionArticulo> ArticulosInc { get; set; }
         public List<ComisionArticulo> ArticulosExc { get; set; }
 
+
         public virtual Rubro Rubro { get; set; }
         public virtual SubRubro SubRubro { get; set; }
-        //public virtual Marca Marca { get; set; }
+        public virtual Marca Marca { get; set; }
         public virtual FuncionComi FuncionComi { get; set; }
     }
 }
