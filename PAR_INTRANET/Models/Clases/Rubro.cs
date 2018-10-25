@@ -15,6 +15,7 @@ namespace PAR_INTRANET.Models.Clases
         public string CodNivArt1 { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "Rubro")]
         public string DesNivArt1 { get; set; }
 
         public bool Inactivo { get; set; }

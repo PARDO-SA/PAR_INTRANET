@@ -104,11 +104,15 @@ $(document).ready(function () {
             }
         },
         "lengthChange": false,
-        "scrollX": true,
-        "scrollY": "380px",
         "scrollCollapse": true,
-        "pageLength": 20,
+        "info": false,
+        "paging": false
     });
 
-
+    $('#tablaComiArt').dataTable({
+        "paging": false,
+        "searching": false,
+        "info": false,
+        "ordering": false
+    });
 });

@@ -15,6 +15,7 @@ namespace PAR_INTRANET.Models.Clases
         public int IdFuncion { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Tipo Comisión")]
         public string DesFuncion { get; set; }
 
         [StringLength(100)]

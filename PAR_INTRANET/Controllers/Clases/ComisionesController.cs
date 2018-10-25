@@ -27,6 +27,7 @@ namespace PAR_INTRANET.Controllers.Clases
         {
             if (id == null)
             {
+
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Comision comision = db.Comisiones.Find(id);
@@ -34,6 +35,10 @@ namespace PAR_INTRANET.Controllers.Clases
             {
                 return HttpNotFound();
             }
+            ViewBag.activo = "ACTIVO";
+            ViewBag.inactivo = "INACTIVO";
+            ViewBag.condatos = "SI";
+            ViewBag.sindatos = "NO";
             return View(comision);
         }
 
@@ -119,6 +124,8 @@ namespace PAR_INTRANET.Controllers.Clases
             {
                 return HttpNotFound();
             }
+            ViewBag.activo = "ACTIVO";
+            ViewBag.inactivo = "INACTIVO";
             return View(comision);
         }
 

@@ -20,6 +20,7 @@ namespace PAR_INTRANET.Models.Clases
         public string CodEleRefArt { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "Marca")]
         public string DesEleRefArt { get; set; }
     }
 }

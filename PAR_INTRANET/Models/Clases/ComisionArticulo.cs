@@ -15,10 +15,10 @@ namespace PAR_INTRANET.Models.Clases
         public int IdComi { get; set; }
 
         [Key]
-        [Column(Order=1)]
+        [Column("CodArtComi", Order=1)]
         [StringLength(20)]
         [ForeignKey("Articulo")]
-        public string CodArtComi { get; set; }
+        public string CodArt { get; set; }
 
         [RegularExpression("EIei")]
         [StringLength(1)]

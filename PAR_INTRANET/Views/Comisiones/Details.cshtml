@@ -1,5 +1,254 @@
 ﻿@model PAR_INTRANET.Models.Clases.Comision
 
+@if (Session["Codusr"] == null)
+{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/sweetalert2.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        let timerInterval
+        swal({
+            type: 'error',
+            title: 'Sesión Expirada',
+            html: 'Serás redirigido en <strong></strong> milisegundos.',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            heightAuto: false,
+            timer: 8000,
+            onOpen: () => {
+                swal.showLoading()
+                timerInterval = setInterval(() => {
+                    swal.getContent().querySelector('strong')
+                        .textContent = swal.getTimerLeft()
+                }, 100)
+            },
+            onClose: () => {
+                clearInterval(timerInterval);
+                redireccion();
+            }
+        }).then((result) => {
+            if (
+                // Read more about handling dismissals
+                result.dismiss === swal.DismissReason.timer
+            ) {
+                console.log('I was closed by the timer')
+            }
+        })
+
+
+        function redireccion() {
+            window.location.href = "/Login/logueo";
+        }
+
+    </script>
+
+}
+@{
+    ViewBag.Title = "Prueba";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-6">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">DETALLE DE COMISION</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <div class="form-horizontal">
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.IdComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(m => m.IdComi, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DesComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.DesComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(m => m.DesComi, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FecVigDesComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.FecVigDesComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(m => m.FecVigDesComi, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FecVigHasComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.FecVigHasComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(m => m.FecVigHasComi, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodNivArt1, "Rubro", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Rubro.DesNivArt1, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodNivArt2, "Sub Rubro", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.SubRubro.DesNivArt2, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodEleRefArt, "Marca", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Marca.DesEleRefArt, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ArtIncComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @if (Model.ArtIncComi == true)
+                        {
+                            @Html.Editor("condatos", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            <div class="col-sm-10">
+                                <table id="tablaComiArt" class="cell-border display compact" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th> Código </th>
+                                            <th> Descripción </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Articulos.Where(a => a.Tipo == "I"))
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(modelItem => item.CodArt)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Articulo.DesArt)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                        else
+                        {
+                            @Html.Editor("sindatos", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ArtExcComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @if (Model.ArtExcComi == true)
+                        {
+                            @Html.Editor("condatos", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            <div class="col-sm-10">
+                                <table id="tablaComiArt" class="cell-border display compact" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Descripción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Articulos.Where(a => a.Tipo == "E"))
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(modelItem => item.CodArt)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Articulo.DesArt)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                        else
+                        {
+                            @Html.Editor("sindatos", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VendeComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @if (Model.VendeComi == true)
+                        {
+                            @Html.Editor("condatos", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            <div class="col-sm-10">
+                                @Html.LabelFor(model => model.ImpComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                                @Html.EditorFor(model => model.ImpComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.LabelFor(model => model.PorComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                                @Html.EditorFor(model => model.PorComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            </div>
+                        }
+                        else
+                        {
+                            @Html.Editor("sindatos", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RestoComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @if (Model.RestoComi == true)
+                        {
+                            @Html.Editor("condatos", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            <div class="col-sm-10">
+                                @Html.LabelFor(model => model.ImpRestoComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                                @Html.EditorFor(model => model.ImpRestoComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.LabelFor(model => model.PorRestoComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                                @Html.EditorFor(model => model.PorRestoComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            </div>
+                        }
+                        else
+                        {
+                            @Html.Editor("sindatos", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdFuncion, "Tipo de Comisión", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.FuncionComi.DesFuncion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @if (Model.Inactivo == false)
+                        {
+                            @Html.Editor("activo", new { htmlAttributes = new { @class = "input_tabla_activo", @readonly = "readonly" } })
+                        }
+                        else
+                        {
+                            @Html.Editor("inactivo", new { htmlAttributes = new { @class = "input_tabla_inactivo", @readonly = "readonly" } })
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <input type="button" name="Volver" value="Volver" class="btn btn-danger pull-right" onClick="location.href='/Comisiones/Index'">
+            </div>
+            <!-- /.box-footer -->
+        </div>
+
+    </div>
+</div>
+
+<!--
 @{
     ViewBag.Title = "Details";
 }
@@ -144,3 +393,4 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.IdComi }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+-->

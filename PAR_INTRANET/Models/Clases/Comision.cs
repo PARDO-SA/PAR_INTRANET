@@ -78,8 +78,9 @@ namespace PAR_INTRANET.Models.Clases
         [Column("CodRefArtComi")]
         public char CodRefArt { get; set; }
 
-        public List<ComisionArticulo> ArticulosInc { get; set; }
-        public List<ComisionArticulo> ArticulosExc { get; set; }
+        //public List<ComisionArticulo> ArticulosInc { get; set; } = new List<ComisionArticulo>();
+        //public List<ComisionArticulo> ArticulosExc { get; set; } = new List<ComisionArticulo>();
+        public virtual ICollection<ComisionArticulo> Articulos { get; set; }
 
 
         public virtual Rubro Rubro { get; set; }

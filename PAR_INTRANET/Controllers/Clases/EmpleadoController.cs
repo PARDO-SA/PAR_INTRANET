@@ -18,10 +18,8 @@ namespace PAR_INTRANET.Controllers.Clases
         // GET: Empleado
         public ActionResult Index()
         {
-                ViewBag.Zona = 41;
                 var empleados = db.Empleados;//.Include(e => e.FPrincipal);
                 return View(empleados.ToList());
-
         }
 
         // GET: Empleado/Details/5
