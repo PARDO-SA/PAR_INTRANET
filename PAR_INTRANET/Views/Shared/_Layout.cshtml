@@ -60,7 +60,7 @@ desired effect
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="index2.html" class="logo">
+            <a href="/Home/index" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>P</b>IN</span>
                 <!-- logo for regular state and mobile devices -->
@@ -87,22 +87,22 @@ desired effect
                                 {
                                     <span class="hidden-xs">@Session["Nomusr"].ToString()</span>
                                 }
-                                </a>
+                            </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
                                     <img src="~/Content/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <!-- <p>
-            Alexander Pierce - Web Developer
-            <small>Member since Nov. 2012</small>
-        </p>-->
+                                        Alexander Pierce - Web Developer
+                                        <small>Member since Nov. 2012</small>
+                                    </p>-->
                                     <p>
                                         @if (Session["Codusr"] != null)
                                         {
                                             @Session["Nomusr"].ToString()
                                         }
-                                        </p>
+                                    </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
@@ -111,7 +111,7 @@ desired effect
                                     </div>
                                     <div class="pull-right">
                                         <a href="/Login/Salir" class="btn btn-default btn-flat">Cerrar Sesión</a>
-</div>
+                                    </div>
                                 </li>
                             </ul>
                         </li>
@@ -130,6 +130,7 @@ desired effect
             <section class="sidebar">
 
                 <!-- Sidebar user panel (optional) -->
+                <!--
                 <div class="user-panel">
                     <div class="pull-left image">
                         <img src="~/Content/img/user2-160x160.jpg" class="img-circle" alt="User Image">
@@ -139,138 +140,141 @@ desired effect
                         {
                             <p>@Session["Nomusr"].ToString()</p>
                         }
-                            <!-- Status -->
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                        </div>
+                -->
+                        <!-- Status -->
+                <!--
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
                 </div>
-
-                <!-- Sidebar Menu -->
+                -->
+    <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">HEADER</li>
+                    <!--<li class="header">Menú</li> -->
                     <!-- Optionally, you can add icons to the links -->
                     <!--<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li> REEMPLAZADO-->
-                    <li class="active"> @Html.ActionLink("Inicio", "Índice", "Inicio") </li>
+                    <li><a href="/Home/index"><i class="fa fa-dashboard"></i><span>Inicio</span></a></li> <!--@Html.ActionLink("Inicio", "index", "Home")</li>-->
+                    <li><a href="/EstadoSucursales/index"><i class="fa fa-check"></i><span>Estado Sucursales</span></a></li> <!--@Html.ActionLink("Estado Sucursales", "index", "EstadoSucursales")</li> -->
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-th-list"></i> <span>TABLAS</span>
+                            <i class="fa fa-th-list"></i> <span>Tablas</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/Empleado/index">EMPLEADOS</a></li>
-                            <li><a href="/Comisiones/index">COMISIONES</a></li>
+                            <li><a href="/Empleado/index">Empleados</a></li>
+                            <li><a href="/Comisiones/index">Comisiones</a></li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Acerca de", "Acerca de", "Inicio") </li>
-                    <li>@Html.ActionLink("Contacto", "Contacto", "Inicio") </li>
+                    <li><a href="/Home/About"><i class="fa fa-info"></i><span>Acerca de</span></a></li>
+                    <li><a href="/Home/Contact"><i class="fa fa-envelope"></i><span>Contacto</span></a></li>
 
                 </ul>
-                <!-- /.sidebar-menu -->
-            </section>
-            <!-- /.sidebar -->
-        </aside>
+    <!-- /.sidebar-menu -->
+</section>
+    <!-- /.sidebar -->
+    </aside>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
 
-            <!-- Main content -->
-            <section class="content container-fluid">
-                @RenderBody()
-                <!--------------------------
-                      | Your Page Content Here |
-                -------------------------->
+        <!-- Main content -->
+        <section class="content container-fluid">
+            @RenderBody()
+            <!--------------------------
+                  | Your Page Content Here |
+            -------------------------->
 
-            </section>
-            <!-- /.content -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            All rights reserved.
         </div>
-        <!-- /.content-wrapper -->
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="pull-right hidden-xs">
-                All rights reserved.
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2018 <a href="#">PardoINTRANET.</a>.</strong>
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Home tab content -->
+            <div class="tab-pane active" id="control-sidebar-home-tab">
+                <h3 class="control-sidebar-heading">Recent Activity</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript:;">
+                            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                                <p>Will be 23 on April 24th</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+                <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript:;">
+                            <h4 class="control-sidebar-subheading">
+                                Custom Template Design
+                                <span class="pull-right-container">
+                                    <span class="label label-danger pull-right">70%</span>
+                                </span>
+                            </h4>
+
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
             </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2018 <a href="#">PardoINTRANET.</a>.</strong> 
-        </footer>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            <!-- /.tab-pane -->
+            <!-- Settings tab content -->
+            <div class="tab-pane" id="control-sidebar-settings-tab">
+                <form method="post">
+                    <h3 class="control-sidebar-heading">General Settings</h3>
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Create the tabs -->
-            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <!-- Home tab content -->
-                <div class="tab-pane active" id="control-sidebar-home-tab">
-                    <h3 class="control-sidebar-heading">Recent Activity</h3>
-                    <ul class="control-sidebar-menu">
-                        <li>
-                            <a href="javascript:;">
-                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Report panel usage
+                            <input type="checkbox" class="pull-right" checked>
+                        </label>
 
-                                <div class="menu-info">
-                                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                    <p>Will be 23 on April 24th</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.control-sidebar-menu -->
-
-                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                    <ul class="control-sidebar-menu">
-                        <li>
-                            <a href="javascript:;">
-                                <h4 class="control-sidebar-subheading">
-                                    Custom Template Design
-                                    <span class="pull-right-container">
-                                        <span class="label label-danger pull-right">70%</span>
-                                    </span>
-                                </h4>
-
-                                <div class="progress progress-xxs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.control-sidebar-menu -->
-
-                </div>
-                <!-- /.tab-pane -->
-                <!-- Stats tab content -->
-                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-                <!-- /.tab-pane -->
-                <!-- Settings tab content -->
-                <div class="tab-pane" id="control-sidebar-settings-tab">
-                    <form method="post">
-                        <h3 class="control-sidebar-heading">General Settings</h3>
-
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Report panel usage
-                                <input type="checkbox" class="pull-right" checked>
-                            </label>
-
-                            <p>
-                                Some information about this general settings option
-                            </p>
-                        </div>
-                        <!-- /.form-group -->
-                    </form>
-                </div>
-                <!-- /.tab-pane -->
+                        <p>
+                            Some information about this general settings option
+                        </p>
+                    </div>
+                    <!-- /.form-group -->
+                </form>
             </div>
-        </aside>
-        <!-- /.control-sidebar -->
-        <!-- Add the sidebar's background. This div must be placed
-        immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+            <!-- /.tab-pane -->
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+    immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
     <!-- REQUIRED JS SCRIPTS -->
@@ -282,7 +286,7 @@ desired effect
     <!--<script src="dist/js/adminlte.min.js"></script> REEMPLAZADO-->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required:false)
+    @RenderSection("scripts", required: false)
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the

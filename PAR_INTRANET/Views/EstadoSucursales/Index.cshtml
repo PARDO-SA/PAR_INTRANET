@@ -1,0 +1,140 @@
+﻿@model IEnumerable<PAR_INTRANET.Models.Clases.Tablas.EstadoSucursal>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Estado Sucursales</h3>
+<h5>Fecha y Hora: <span class="bg-light-blue-active">@ViewBag.FechaHora</span></h5>
+
+<table id="tablaEstadoSucursales" class="cell-border display nowrap" cellspacing="0" data-order='[[ 1, "asc" ]]'>
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodSuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sucursal.Dessuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TXUltimaActualizacionCentral)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TXUltimaConsultaCentral)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TXEstadoCentral)
+            </th>
+            <th>
+                Horas
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TXUltimaActualizacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TXUltimaConsulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TXEstado)
+            </th>
+            <th>
+                Horas
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TXError)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IBBAUltimaActualizacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IBBAUltimaConsulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IBBAError)
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            var bgCentral = "";
+            var bgSucursal = "";
+            var bgGeneral = "";
+            TimeSpan difCentral;
+            TimeSpan difSucursal;
+        }
+
+        @foreach (var item in Model)
+        {
+            bgCentral = "bg-green";
+            bgSucursal = "bg-green";
+            bgGeneral = "bg-green";
+            if (item.TXEstado.StartsWith("ERROR", true, null)) { bgSucursal = "bg-red"; }
+            if (item.TXEstadoCentral.StartsWith("ERROR", true, null)) { bgCentral = "bg-error"; }
+            difCentral = ViewBag.FechaHora - item.TXUltimaActualizacionCentral;
+            difSucursal = ViewBag.FechaHora - item.TXUltimaActualizacion;
+            if (bgCentral != "bg-red")
+            {
+                if ((difCentral.Hours+difCentral.Days*24) >= 6) { bgCentral = "bg-red"; } else { if ((difCentral.Hours+difCentral.Days*24) >= 4) { bgCentral = "bg-orange"; } else { if ((difCentral.Hours+difCentral.Days*24) >= 2) { bgCentral = "bg-yellow"; } } }
+            }
+            if (bgSucursal != "bg-red")
+            {
+                if ((difCentral.Hours+difCentral.Days*24) >= 6) { bgSucursal = "bg-red"; } else { if ((difCentral.Hours+difCentral.Days*24) >= 4) { bgSucursal = "bg-orange"; } else { if ((difCentral.Hours+difCentral.Days*24) >= 2) { bgSucursal = "bg-yellow"; } } }
+            }
+            if (bgCentral == "bg-red" || bgSucursal == "bg-red") { bgGeneral = "bg-red"; } else { if (bgCentral == "bg-orange" || bgSucursal == "bg-orange") { bgGeneral = "bg-orange"; } else { if (bgCentral == "bg-yellow" || bgSucursal == "bg-yellow") { bgGeneral = "bg-yellow"; } } }
+            
+        <tr>
+            <td>
+                <a href='@Url.Action("ConsultarSucursal", "EstadoSucursales" ,new { id = item.CodSuc})'>
+                    <i class="fa fa-refresh"></i>
+                </a>
+            </td>
+            <td class="@bgGeneral" align="center">
+                @Html.DisplayFor(modelItem => item.CodSuc)
+            </td>
+            <td class="@bgGeneral">
+                @Html.DisplayFor(modelItem => item.Sucursal.Dessuc)
+            </td>
+            <td class="@bgCentral">
+                @Html.DisplayFor(modelItem => item.TXUltimaActualizacionCentral)
+            </td>
+            <td class="@bgCentral">
+                @Html.DisplayFor(modelItem => item.TXUltimaConsultaCentral)
+            </td>
+            <td class="@bgCentral">
+                @Html.DisplayFor(modelItem => item.TXEstadoCentral)
+            </td>
+            <td class="@bgCentral" align="center">
+                @(difCentral.Hours+difCentral.Days*24)
+            </td>
+            <td class="@bgSucursal">
+                @Html.DisplayFor(modelItem => item.TXUltimaActualizacion)
+            </td>
+            <td class="@bgSucursal">
+                @Html.DisplayFor(modelItem => item.TXUltimaConsulta)
+            </td>
+            <td class="@bgSucursal">
+                @Html.DisplayFor(modelItem => item.TXEstado)
+            </td>
+            <td class="@bgSucursal" align="center">
+                @(difCentral.Hours + difCentral.Days * 24)
+            </td>
+            <td class="@bgSucursal">
+                @Html.DisplayFor(modelItem => item.TXError)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IBBAUltimaActualizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IBBAUltimaConsulta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IBBAError)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

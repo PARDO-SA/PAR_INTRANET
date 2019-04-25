@@ -110,5 +110,51 @@ $(document).ready(function () {
         "pageLength": 20,
     });
 
+    $('#tablaEstadoSucursales').dataTable({
+        dom: 'Blrti',
+        "columnDefs": [
+            {
+                "orderable": false,
+                "targets": [0, 3, 4, 5, 7, 8, 9, 11, 12, 13, 14]
+            }
+        ],
+        "buttons": [
+            {
+                className: 'btn-refresh',
+                action: function () {
+                    var table = $('#tablaEstadoSucursales').DataTable();
+                    table
+                        .order([[1, 'asc']])
+                        .draw(false);
+                }
+            },
+        ],
+        "language": {
+            //"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json",
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros ",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            }
+        },
+        "lengthChange": false,
+        "scrollX": true,
+        "scrollCollapse": true,
+        "searching": false,
+        "paging": false
+    });
 
 });

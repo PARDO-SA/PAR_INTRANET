@@ -136,6 +136,22 @@
     opacity: 0.3;
 }
 
+.dt-button.btn-refresh {
+    float: left;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-image: none;
+    background-image: url("img/icons8-sincronizar-40.png");
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.btn-refresh.dt-button:hover:not(.disabled) {
+    background-color: transparent;
+    opacity: 0.3;
+}
 
 .dt-button.btn-excel {
     float: left;
