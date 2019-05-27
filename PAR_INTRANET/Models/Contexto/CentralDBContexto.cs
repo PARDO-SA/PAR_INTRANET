@@ -13,10 +13,10 @@ namespace PAR_INTRANET.Models.Contexto
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<Sucursal> Sucursales { get; set; }
         public DbSet<FuncionEmple> Funciones { get; set; }
-
         public DbSet<Comision> Comisiones { get; set; }
         public DbSet<ComisionArticulo> ComisionesArticulos { get; set; }
         public DbSet<FuncionComi> FuncionesComisiones { get; set; }
+        public DbSet<RefArt> RefArts { get; set; }
         public DbSet<Marca> Marcas { get; set; }
         public DbSet<Rubro> Rubros { get; set; }
         public DbSet<SubRubro> SubRubros { get; set; }

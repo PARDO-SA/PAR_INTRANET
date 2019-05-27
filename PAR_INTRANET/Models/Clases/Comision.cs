@@ -25,21 +25,33 @@ namespace PAR_INTRANET.Models.Clases
         [Display(Name = "Hasta")]
         public DateTime? FecVigHasComi { get; set; }
 
+        [Column("CodNivArt1Comi")]
+        //[ForeignKey("Nivel1")]
         [Display(Name = "Rubro")]
         [StringLength(3)]
-        public string CodNivArt1Comi { get; set; }
+        public string CodNivArt1 { get; set; }
 
+        [Column("CodNivArt2Comi")]
+        //[ForeignKey("Nivel2")]
         [Display(Name = "SubRubro")]
         [StringLength(3)]
-        public string CodNivArt2Comi { get; set; }
+        public string CodNivArt2 { get; set; }
 
+        [Column("CodNivArt3Comi")]
         [ScaffoldColumn(false)]
         [StringLength(3)]
-        public string CodNivArt3Comi { get; set; }
+        public string CodNivArt3 { get; set; }
 
+        [Column("CodRefArtComi")]
+        //[ForeignKey("RefArt")]
+        [ScaffoldColumn(false)]
+        public Byte? CodRefArt { get; set; } 
+
+        [Column("MarcaComi")]
+        //[ForeignKey("Marca")]
         [Display(Name = "Marca")]
         [StringLength(10)]
-        public string MarcaComi { get; set; }
+        public string CodeleRefArt { get; set; }
 
         [Display(Name = "Incluye Artículos")]
         public bool ArtIncComi { get; set; }
@@ -74,9 +86,10 @@ namespace PAR_INTRANET.Models.Clases
         public List<ComisionArticulo> ArticulosInc { get; set; }
         public List<ComisionArticulo> ArticulosExc { get; set; }
 
-        public virtual Rubro Rubro { get; }
-        public virtual SubRubro SubRubro { get; }
-        public virtual Marca Marca { get; }
-        public virtual FuncionComi FuncionComi { get; set; }
+        public virtual Rubro Nivel1 { get; set; }
+        public virtual SubRubro Nivel2 { get; set; }
+        public virtual RefArt RefArt { get; set; }
+        public virtual Marca Marca { get; set;}
+        public virtual FuncionComi FuncionComi { get; }
     }
 }

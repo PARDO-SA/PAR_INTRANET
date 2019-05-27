@@ -18,7 +18,8 @@ namespace PAR_INTRANET.Controllers.Clases
         // GET: Comisiones
         public ActionResult Index()
         {
-            return View(db.Comisiones.ToList());
+            var comisiones = db.Comisiones.Include(c => c.Nivel1).Include(c => c.Nivel2).Include(c => c.RefArt).Include(c => c.Marca);
+            return View(comisiones.ToList());
         }
 
         // GET: Comisiones/Details/5
@@ -33,21 +34,27 @@ namespace PAR_INTRANET.Controllers.Clases
             {
                 return HttpNotFound();
             }
+            ViewBag.activo = "ACTIVO";
+            ViewBag.inactivo = "INACTIVO";
             return View(comision);
         }
 
         // GET: Comisiones/Create
         public ActionResult Create()
         {
+            ViewBag.CodRefArt = new SelectList(db.Marcas, "CodRefArt", "DesEleRefArt");
+            ViewBag.CodNivArt1 = new SelectList(db.Rubros, "CodNivArt1", "DesNivArt1");
+            ViewBag.CodNivArt1 = new SelectList(db.SubRubros, "CodNivArt1", "DesNivArt2");
+            ViewBag.CodRefArt = new SelectList(db.RefArts, "CodRefArt", "DesEleRefArt");
             return View();
         }
 
         // POST: Comisiones/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdComi,DesComi,FecVigDesComi,FecVigHasComi,CodNivArt1Comi,CodNivArt2Comi,CodNivArt3Comi,MarcaComi,ArtIncComi,ArtExcComi,VendeComi,ImpComi,PorComi,RestoComi,ImpRestoComi,PorRestoComi,Inactivo,IdFuncion")] Comision comision)
+        public ActionResult Create([Bind(Include = "IdComi,DesComi,FecVigDesComi,FecVigHasComi,CodNivArt1,CodNivArt2,CodNivArt3,CodRefArt,CodeleRefArt,ArtIncComi,ArtExcComi,VendeComi,ImpComi,PorComi,RestoComi,ImpRestoComi,PorRestoComi,Inactivo,IdFuncion")] Comision comision)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +63,10 @@ namespace PAR_INTRANET.Controllers.Clases
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CodRefArt = new SelectList(db.Marcas, "CodRefArt", "DesEleRefArt", comision.CodRefArt);
+            ViewBag.CodNivArt1 = new SelectList(db.Rubros, "CodNivArt1", "DesNivArt1", comision.CodNivArt1);
+            ViewBag.CodNivArt1 = new SelectList(db.SubRubros, "CodNivArt1", "DesNivArt2", comision.CodNivArt1);
+            ViewBag.CodRefArt = new SelectList(db.RefArts, "CodRefArt", "DesEleRefArt", comision.CodRefArt);
             return View(comision);
         }
 
@@ -71,15 +82,19 @@ namespace PAR_INTRANET.Controllers.Clases
             {
                 return HttpNotFound();
             }
+            ViewBag.CodRefArt = new SelectList(db.Marcas, "CodRefArt", "DesEleRefArt", comision.CodRefArt);
+            ViewBag.CodNivArt1 = new SelectList(db.Rubros, "CodNivArt1", "DesNivArt1", comision.CodNivArt1);
+            ViewBag.CodNivArt1 = new SelectList(db.SubRubros, "CodNivArt1", "DesNivArt2", comision.CodNivArt1);
+            ViewBag.CodRefArt = new SelectList(db.RefArts, "CodRefArt", "DesEleRefArt", comision.CodRefArt);
             return View(comision);
         }
 
         // POST: Comisiones/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdComi,DesComi,FecVigDesComi,FecVigHasComi,CodNivArt1Comi,CodNivArt2Comi,CodNivArt3Comi,MarcaComi,ArtIncComi,ArtExcComi,VendeComi,ImpComi,PorComi,RestoComi,ImpRestoComi,PorRestoComi,Inactivo,IdFuncion")] Comision comision)
+        public ActionResult Edit([Bind(Include = "IdComi,DesComi,FecVigDesComi,FecVigHasComi,CodNivArt1,CodNivArt2,CodNivArt3,CodRefArt,CodeleRefArt,ArtIncComi,ArtExcComi,VendeComi,ImpComi,PorComi,RestoComi,ImpRestoComi,PorRestoComi,Inactivo,IdFuncion")] Comision comision)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +102,10 @@ namespace PAR_INTRANET.Controllers.Clases
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CodRefArt = new SelectList(db.Marcas, "CodRefArt", "DesEleRefArt", comision.CodRefArt);
+            ViewBag.CodNivArt1 = new SelectList(db.Rubros, "CodNivArt1", "DesNivArt1", comision.CodNivArt1);
+            ViewBag.CodNivArt1 = new SelectList(db.SubRubros, "CodNivArt1", "DesNivArt2", comision.CodNivArt1);
+            ViewBag.CodRefArt = new SelectList(db.RefArts, "CodRefArt", "DesEleRefArt", comision.CodRefArt);
             return View(comision);
         }
 

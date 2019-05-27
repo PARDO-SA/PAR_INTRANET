@@ -19,13 +19,13 @@ namespace PAR_INTRANET.Controllers.Clases
         public ActionResult Index()
         {
             ViewBag.FechaHora = DateTime.Now;
-            return View();
+            return View(db.EstadoSucursales.ToList());
         }
 
-        public ActionResult MostrarEstados()
+        public ActionResult EstadoTx()
         {
-            var estados = db.EstadoSucursales.ToList();
-            return PartialView("_MostrarEstados", estados);
+            ViewBag.FechaHora = DateTime.Now;
+            return PartialView("_EstadoTx", db.EstadoSucursales.ToList());
         }
 
         protected override void Dispose(bool disposing)
