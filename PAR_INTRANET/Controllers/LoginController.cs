@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PAR_INTRANET.Models.Contexto;
+using PAR_INTRANET.Models.Login;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PAR_INTRANET.Models.Login;
-using PAR_INTRANET.Models.Contexto;
-using PAR_INTRANET.Controllers;
 
 namespace PAR_INTRANET.Controllers
 {

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using PAR_INTRANET.Models.Login;
 using System.Data.Entity;
-using PAR_INTRANET.Models.Login;
 
 namespace PAR_INTRANET.Models.Contexto
 {
-    public class SistemaDBContexto : DbContext
+    public partial class SistemaDBContexto : DbContext
     {
+        public SistemaDBContexto() : base("name=SistemaDBContexto") { }
+
         public DbSet<Usuario> Usuarios { get; set; }
     }
-    
+
 }

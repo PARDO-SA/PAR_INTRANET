@@ -1,111 +1,81 @@
 ﻿@model IEnumerable<PAR_INTRANET.Models.Clases.Comision>
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/sweetalert2.js"></script>
+
+@*<script src="~/Scripts/sweetalert2.js"></script>
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
-<link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
-@if (Session["Codusr"] == null)
-{
-    <script type="text/javascript">
-        let timerInterval
-        swal({
-            type: 'error',
-            title: 'Sesión Expirada',
-            html: 'Serás redirigido en <strong></strong> milisegundos.',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            heightAuto: false,
-            timer: 8000,
-            onOpen: () => {
-                swal.showLoading()
-                timerInterval = setInterval(() => {
-                    swal.getContent().querySelector('strong')
-                        .textContent = swal.getTimerLeft()
-                }, 100)
-            },
-            onClose: () => {
-                clearInterval(timerInterval);
-                redireccion();
-            }
-        }).then((result) => {
-            if (
-                // Read more about handling dismissals
-                result.dismiss === swal.DismissReason.timer
-            ) {
-                console.log('I was closed by the timer')
-            }
-        })
+<link href="~/Content/sweetalert2.min.css" rel="stylesheet" />*@
 
-        function redireccion() {
-            window.location.href = "/Login/logueo";
-        }
-
-    </script>
-}
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Comisiones</h2>
+<h3>Trabajar con Comisiones</h3>
 
-<table id="tabla" class="cell-border display compact" cellspacing="0">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Marca)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CodNivArt1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CodNivArt2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DesComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FecVigDesComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FecVigHasComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ArtIncComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ArtExcComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VendeComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImpComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PorComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestoComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImpRestoComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PorRestoComi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdFuncion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Inactivo)
-        </th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
+<table id="tablaComisiones" class="cell-border display compact" cellspacing="0">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DesComi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca.DesEleRefArt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nivel1.DesNivArt1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nivel2.DesNivArt2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FecVigDesComi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FecVigHasComi)
+            </th>
+    @*<th>
+        @Html.DisplayNameFor(model => model.ArtIncComi)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.ArtExcComi)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.VendeComi)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.ImpComi)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.PorComi)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.RestoComi)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.ImpRestoComi)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.PorRestoComi)
+    </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Inactivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionComi.DesFuncion)
+            </th>
+    <th>Artículos</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
 
+    <tbody>
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DesComi)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Marca.DesEleRefArt)
             </td>
@@ -116,41 +86,35 @@
                 @Html.DisplayFor(modelItem => item.Nivel2.DesNivArt2)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DesComi)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.FecVigDesComi)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FecVigHasComi)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArtIncComi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArtExcComi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VendeComi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImpComi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PorComi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestoComi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImpRestoComi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PorRestoComi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FuncionComi.DesFuncion)
-            </td>
+    @*<td>
+        @Html.DisplayFor(modelItem => item.ArtIncComi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ArtExcComi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VendeComi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ImpComi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PorComi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RestoComi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ImpRestoComi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PorRestoComi)
+    </td>*@
             <td>
                 @if (item.Inactivo == false)
                 {
@@ -160,24 +124,45 @@
                 {
                     <p class="text-inactivo">INACTIVO</p>
                 }
-                <!--@Html.DisplayFor(modelItem => item.Inactivo)-->
             </td>
+
             <td>
-                <a href='@Url.Action("Details", "Comisiones" ,new { id = item.IdComi})'>
+                @Html.DisplayFor(modelItem => item.FuncionComi.DesFuncion)
+            </td>
+
+    <td>
+        @if (item.Articulos.Count > 0)
+        {
+            <table>
+                <tr><th>Artículo</th><th>Descripción</th><th>Tipo</th></tr>
+                @foreach (var artInc in item.Articulos)
+                {
+                    <tr>
+                        <td>@artInc.CodArt</td>
+                        <td>@artInc.Articulo.DesArt</td>
+                        <td>@artInc.Tipo</td>
+                    </tr>
+                }
+            </table>
+        }
+    </td>
+            <td>
+
+                <a href='@Url.Action("Details", "Comision" ,new { id = item.IdComi})'>
                     <img src="~/Content/img/detalle1.png" title="Ver" width="20" height="20" />
                 </a>
             </td>
             <td>
-                <a href='@Url.Action("Edit", "Comisiones" ,new {id = item.IdComi})'>
+                <a href='@Url.Action("Edit", "Comsion" ,new {id = item.IdComi})'>
                     <img src="~/Content/img/editar.png" title="Editar" width="20" height="20" />
                 </a>
             </td>
             <td>
-                <a href='@Url.Action("Delete", "Comisiones" ,new {id = item.IdComi})'>
+                <a href='@Url.Action("Delete", "Comision" ,new {id = item.IdComi})'>
                     <img src="~/Content/img/Baja.png" title="Borrar" width="20" height="20" />
                 </a>
             </td>
         </tr>
     }
-
+    </tbody>
 </table>

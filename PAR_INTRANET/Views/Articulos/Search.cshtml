@@ -1,0 +1,94 @@
+﻿@model IEnumerable<PAR_INTRANET.Models.Clases.Tablas.Articulo>
+
+@using (Html.BeginForm("Search", "Articulos", FormMethod.Post, new { id = "searchForm" }))
+{
+    <div style="border: solid 1px #ccc; padding: 30px 0 30px 30px; border-radius: 5px; width: 325px; margin: auto; display: table;">
+        @{
+            List<SelectListItem> buscar = new List<SelectListItem>();
+            buscar.Add(new SelectListItem() { Text = "Código", Value = "CodArt" });
+            buscar.Add(new SelectListItem() { Text = "Descricpción", Value = "DesArt" });
+            //buscar.Add(new SelectListItem() { Text = "Phone Number", Value = "Phone_Number" });
+            ViewBag.Search_Type = buscar;
+        }
+        <table>
+            <tr>
+                <td valign="top">
+                    Search By:
+                </td>
+                <td>
+                    @Html.DropDownList("Search_Type", ViewBag.Search_Type as List<SelectListItem>,  " -- Seleccionar Búsqueda --")
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"></td>
+                <td>
+                    @Html.TextBox("Search_String")
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" id="submit" value="Buscar" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+        <table class="table" id="search">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodArt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DesArt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nivel1.DesNivArt1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nivel2.DesNivArt2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Marca.DesEleRefArt)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodArt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DesArt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nivel1.DesNivArt1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nivel2.DesNivArt2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marca.DesEleRefArt)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        @section scripts{
+            <script>
+                $(document).ready(function () {
+                    var table = $('#search').DataTable();
+
+                    $('#search tbody').on('click', 'tr', function () {
+                        $(this).toggleClass('selected');
+                    });
+
+                    //$('#button').click( function () {
+                    //    alert( table.rows('.selected').data().length +' row(s) selected' );
+                    //} );
+                });
+            </script>
+        }

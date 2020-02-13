@@ -1,0 +1,77 @@
+﻿<script src="~/Scripts/sweetalert2.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Resumen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    System.Data.DataTable tbl = new System.Data.DataTable();
+    tbl = ViewData["PivotDataTable"] as System.Data.DataTable;
+
+    decimal tot = 0;
+
+    List<String> columns = new List<String>();
+
+    for (int c = 0; c < tbl.Columns.Count; c++)
+    {
+        string colname = tbl.Columns[c].Caption.ToString();
+
+        if (colname.Contains("_"))
+        {
+            columns.Add(colname.Substring(0, colname.IndexOf("_")));
+        }
+        else
+        {
+            columns.Add(colname);
+        }
+    }
+
+    List<String> cols = new List<String>();
+    cols = columns.Distinct().ToList();
+
+}
+
+<h2>Resumen de Comisiones</h2>
+
+@using (Html.BeginForm())
+{
+<p>
+    Mes: @Html.DropDownList("mes", (SelectList)ViewBag.lstmes)
+    Año: @Html.DropDownList("anio", (SelectList)ViewBag.lstanio)
+    <input type="submit" value="Buscar" />
+</p>
+}
+
+<table id="tablaResumenComisiones" class="cell-border display compact" cellspacing="0">
+    <thead>
+        <tr>
+            @for (int i = 0; i < cols.Count; i++)
+            {
+                <th class="text-center">@cols[i]</th>
+            }
+            <th class="text-center">TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in tbl.Rows)
+        {
+            tot = 0;
+            <tr>
+                @for (int i = 0; i < row.ItemArray.Count(); i++)
+                {
+                    if (i > 1)
+                    {
+                        <td align="right">@row.ItemArray.ElementAt(i)</td>
+                        tot = tot + System.Convert.ToDecimal(row.ItemArray.ElementAt(i));
+                    } else
+                    {
+                        <td>@row.ItemArray.ElementAt(i)</td>
+                    }
+
+                }
+                <td align="right" class="text-bold">@tot</td>
+            </tr>
+        }
+    </tbody>
+</table>

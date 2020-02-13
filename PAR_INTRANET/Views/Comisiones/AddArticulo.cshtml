@@ -1,0 +1,100 @@
+﻿@model PAR_INTRANET.Models.Clases.ComisionArticulo
+
+@{
+    var titulo = "";
+    switch (Model.Tipo)
+    {
+        case "I":
+            titulo = "Incluir";
+            break;
+        case "E":
+            titulo = "Excluir";
+            break;
+    }
+           
+}
+
+<div>
+    <form id="myForm2">
+        <h4>
+            Agregar Artículo en @titulo
+        </h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CodArt)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Articulo.DesArt, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Articulo.DesArt, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Articulo.DesArt, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Articulo.CodNivArt1, "CodNivArt1", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Articulo.CodNivArt1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Articulo.CodNivArt1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Articulo.CodNivArt2, "CodNivArt2", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Articulo.CodNivArt2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Articulo.CodNivArt2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Articulo.CodEleRefArt, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Articulo.CodEleRefArt, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Articulo.CodEleRefArt, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+
+    </form>
+
+    <div style="text-align:center;display:none" id="Loaderdiv2">
+        <img src="~/loadings.gif" width="150" />
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+            $("#Loaderdiv2").show();
+            var MyData = $("#myForm2").serialize();
+
+            $.ajax({
+                type: "POST",
+                url: "/Orders/AddMoreOrderSave",
+                data: MyData,
+                success: function () {
+                    alert("New Order Added");
+                    $("#Loaderdiv2").hide();
+                    $("#myModal2").modal("hide");
+                    window.location.href = "/Orders/Index"
+                },
+                error: function () {
+                    alert("New Order Added");
+                    $("#Loaderdiv2").hide();
+                    $("#myModal2").modal("hide");
+                    window.location.href = "/Orders/Index"
+                }
+
+            })
+        })
+    })
+
+</script>

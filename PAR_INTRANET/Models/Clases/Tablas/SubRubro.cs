@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace PAR_INTRANET.Models.Clases
 {
     [Table("NivArt2")]
     public class SubRubro
     {
-        [Key, Display(Name = "Código Rubro"), Column(Order=1), ForeignKey("Rubro"), StringLength(3)]
+        [Key, Display(Name = "Código Rubro"), Column(Order = 1), ForeignKey("Rubro"), StringLength(3)]
         public string CodNivArt1 { get; set; }
 
-        [Key, Display(Name = "Código SubRubro"), Column(Order =2), StringLength(3)]
+        [Key, Display(Name = "Código SubRubro"), Column(Order = 2), StringLength(3)]
         public string CodNivArt2 { get; set; }
 
         [Display(Name = "Descripción SubRubro"), StringLength(30)]

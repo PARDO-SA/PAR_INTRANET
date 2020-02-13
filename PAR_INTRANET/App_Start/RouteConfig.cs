@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace PAR_INTRANET
@@ -12,6 +8,22 @@ namespace PAR_INTRANET
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                 name: "ComisionesResumen",
+                 url: "Comisiones/Resumen/{anio}/{mes}",
+                 defaults: new { controller = "Comisiones", action = "Resumen", anio = UrlParameter.Optional, mes = UrlParameter.Optional }
+             );
+            routes.MapRoute(
+                 name: "ComisionesResumenCobranzas",
+                 url: "Comisiones/ResumenCob/{anio}/{mes}",
+                 defaults: new { controller = "Comisiones", action = "ResumenCob", anio = UrlParameter.Optional, mes = UrlParameter.Optional }
+             );
+            routes.MapRoute(
+                 name: "ComisionesAddArticulos",
+                 url: "Comisiones/AddArticulo/{tipo}",
+                 defaults: new { controller = "Comisiones", action = "AddArticulo", tipo = UrlParameter.Optional }
+             );
 
             routes.MapRoute(
                  name: "Default",

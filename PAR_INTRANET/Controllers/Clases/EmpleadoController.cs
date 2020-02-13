@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using PAR_INTRANET.Models.Clases.Tablas;
+using PAR_INTRANET.Models.Contexto;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using PAR_INTRANET.Models.Clases.Tablas;
-using PAR_INTRANET.Models.Contexto;
 
 namespace PAR_INTRANET.Controllers.Clases
 {
@@ -18,9 +15,10 @@ namespace PAR_INTRANET.Controllers.Clases
         // GET: Empleado
         public ActionResult Index()
         {
-                ViewBag.Zona = 41;
-                var empleados = db.Empleados;//.Include(e => e.FPrincipal);
-                return View(empleados.ToList());
+            ViewBag.Zona = 41;
+            var empleados = db.Empleados;
+
+            return View(empleados.ToList());
 
         }
 
@@ -69,7 +67,9 @@ namespace PAR_INTRANET.Controllers.Clases
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
+#pragma warning disable CS0168 // La variable 'ex' se ha declarado pero nunca se usa
                 catch (Exception ex)
+#pragma warning restore CS0168 // La variable 'ex' se ha declarado pero nunca se usa
                 {
                     //1-Mostrar Mensaje , 0-No mostrarlo
                     TempData["Empleado_A"] = "0";
@@ -79,7 +79,7 @@ namespace PAR_INTRANET.Controllers.Clases
                     ModelState.AddModelError(string.Empty, "El legajo ya Existe.");
                     return View(empleado);
                 }
-               
+
             }
 
             ViewBag.CodSuc = new SelectList(db.Sucursales, "CodSuc", "dessuc", empleado.CodSuc);
@@ -106,7 +106,7 @@ namespace PAR_INTRANET.Controllers.Clases
             ViewBag.FuncionP = new SelectList(db.Funciones, "id", "descripcion", empleado.FuncionP);
             ViewBag.FuncionS = new SelectList(db.Funciones, "id", "descripcion", empleado.FuncionS);
             return View(empleado);
-                 
+
         }
 
         // POST: Empleado/Edit/5
@@ -146,7 +146,7 @@ namespace PAR_INTRANET.Controllers.Clases
             ViewBag.activo = "ACTIVO";
             ViewBag.inactivo = "INACTIVO";
             return View(empleado);
-            
+
         }
 
         // POST: Empleado/Delete/5

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace PAR_INTRANET.Models.Clases
 {
@@ -11,7 +7,7 @@ namespace PAR_INTRANET.Models.Clases
     public class FuncionComi
     {
         [Key]
-        [Column(name:"id")]
+        [Column(name: "id")]
         public int IdFuncion { get; set; }
 
         [StringLength(50)]

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PAR_INTRANET.Controllers.Clases.ComisionesController.ResumenComisionesCobQry> 
+   
+<script src="~/Scripts/sweetalert2.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Resumen Comisiones por Cobranzas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Resumen de Comisiones</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Mes: @Html.DropDownList("mes", (SelectList)ViewBag.lstmes)
+        Año: @Html.DropDownList("anio", (SelectList)ViewBag.lstanio)
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
+<table id="tablaResumenComisiones" class="cell-border display compact" cellspacing="0">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sucursal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comision_Ven)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comision_Ven)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cobrado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.A_Cobrar_del_Mes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resta_Cobrar_del_Mes)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sucursal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comision_Suc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comision_Ven)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cobrado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.A_Cobrar_del_Mes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Resta_Cobrar_del_Mes)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

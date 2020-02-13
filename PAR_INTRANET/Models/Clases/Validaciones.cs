@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
-using System.Web;
 
 namespace PAR_INTRANET.Models.Clases
 {
@@ -47,7 +44,7 @@ namespace PAR_INTRANET.Models.Clases
             var values = properties.Select(p => p.GetValue(validationContext.ObjectInstance, null)).OfType<int?>();
             bool obligatorio = false;
 
-            foreach(var v in values)
+            foreach (var v in values)
             {
                 if (v == 5)
                 {
@@ -55,11 +52,12 @@ namespace PAR_INTRANET.Models.Clases
                 }
             }
 
-            if (obligatorio) {
+            if (obligatorio)
+            {
                 if (value == null || (string)value == string.Empty)
                 {
                     return new ValidationResult(ErrorMessage);
-                } 
+                }
             }
 
             return null;

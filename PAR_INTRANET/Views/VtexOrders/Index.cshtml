@@ -1,0 +1,343 @@
+﻿@model IEnumerable<PAR_INTRANET.Models.Clases.Vtex.VtexOrder>
+<script src="~/Scripts/sweetalert2.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Trabajar con Ordenes Web</h3>
+<div>
+    <div class="form-group">
+        <label>Date range:</label>
+
+        <div class="input-group">
+            <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+            </div>
+            <input type="text" class="form-control pull-right" id="reservation">
+        </div>
+        <!-- /.input group -->
+    </div>
+
+    <br />
+
+    <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
+        <i class="fa fa-calendar"></i>&nbsp;
+        <span></span> <i class="fa fa-caret-down"></i>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Hoy': [moment(), moment()],
+                    'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Ultimos 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Ultimos 15 Days': [moment().subtract(14, 'days'), moment()],
+                    'Ultimos 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'Este Mes': [moment().startOf('month'), moment().endOf('month')],
+                    'Ultimo Mes': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+
+            cb(start, end);
+
+        });
+    </script>
+
+    <input type="text" name="datefilter" value="" />
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+
+        });
+    </script>
+</div>
+
+<br />
+
+<div>
+    <!-- Apply any bg-* class to to the info-box to color it -->
+<div class="info-box bg-red">
+    <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+    <div class="info-box-content">
+        <span class="info-box-text">Likes</span>
+        <span class="info-box-number">41,410</span>
+        <!-- The progress section is optional -->
+        <div class="progress">
+            <div class="progress-bar" style="width: 70%"></div>
+        </div>
+        <span class="progress-description">
+            70% Increase in 30 Days
+        </span>
+    </div>
+    <!-- /.info-box-content -->
+</div>
+<!-- /.info-box -->
+</div>
+
+
+<table id="tablaVtexOrder" class="cell-border display compact" cellspacing="0">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DocumentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NroDocCli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomCli)
+        </th>
+        <!--
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomCliWeb)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DomCli)
+                    </th>
+        -->
+        <th>
+            @Html.DisplayNameFor(model => model.DomCliEnv)
+        </th>
+        <!--
+                <th>
+                    @Html.DisplayNameFor(model => model.IVASujeto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodLocCli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodPosCli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tel1Cli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodPosEnv)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodLocEnv)
+                </th>
+        -->
+        <th>
+            @Html.DisplayNameFor(model => model.ImpTotCbt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImpTotFle)
+        </th>
+        <!--
+                <th>
+                    @Html.DisplayNameFor(model => model.CourierID)
+                </th>
+        -->
+        <th>
+            @Html.DisplayNameFor(model => model.CourierName)
+        </th>
+        <!--
+                <th>
+                    @Html.DisplayNameFor(model => model.CodSuc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodAlm)
+                </th>
+        -->
+        <th>
+            @Html.DisplayNameFor(model => model.DownloadDate)
+        </th>
+        <!--
+            <th>
+                @Html.DisplayNameFor(model => model.Json)
+            </th>
+         -->
+        <th>
+            @Html.DisplayNameFor(model => model.CSIDNotVen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CSIDVta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceNotificationStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrackingUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesLocCli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesProvCli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesLocEnv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesProvEnv)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NroDocCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomCli)
+            </td>
+            <!--
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomCliWeb)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DomCli)
+                    </td>
+            -->
+            <td>
+                @Html.DisplayFor(modelItem => item.DomCliEnv)
+            </td>
+            <!--
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IVASujeto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodLocCli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodPosCli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tel1Cli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodPosEnv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodLocEnv)
+                    </td>
+                -->
+            <td>
+                @Html.DisplayFor(modelItem => item.ImpTotCbt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImpTotFle)
+            </td>
+            <!--
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourierID)
+                    </td>
+            -->
+            <td>
+                @Html.DisplayFor(modelItem => item.CourierName)
+            </td>
+            <!--
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodSuc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodAlm)
+                    </td>
+            -->
+            <td>
+                @Html.DisplayFor(modelItem => item.DownloadDate)
+            </td>
+            <!--
+            <td>
+                @Html.DisplayFor(modelItem => item.Json)
+            </td>
+            -->
+            <td>
+                @Html.DisplayFor(modelItem => item.CSIDNotVen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CSIDVta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNotificationStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrackingUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DesLocCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DesProvCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DesLocEnv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DesProvEnv)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VTexOrderId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.VTexOrderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VTexOrderId })
+            </td>
+        </tr>
+    }
+
+</table>

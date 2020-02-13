@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace PAR_INTRANET
 {
@@ -20,6 +19,8 @@ namespace PAR_INTRANET
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/moment").Include(
+            "~/Scripts/moment.js"));
 
             // JQuery validator. 
             bundles.Add(new ScriptBundle("~/bundles/custom-validator").Include(
@@ -36,11 +37,14 @@ namespace PAR_INTRANET
                 "~/Scripts/buttons.html5.min.js",
                 "~/Scripts/buttons.print.min.js",
                 "~/Scripts/bootstrap.js",
-                "~/admin-lte/js/adminlte.js",
-                "~/admin-lte/plugins/iCheck/icheck.js",
-                "~/admin-lte/plugins/fastclick/fastclick.js",
+                "~/admin-lte2.4.10/js/adminlte.js",
+               // "~/admin-lte2.4.10/plugins/iCheck/icheck.js",
+               // "~/admin-lte2.4.10/plugins/fastclick/fastclick.js",
                 "~/Scripts/respond.js",
-                "~/Scripts/table.js"      
+                "~/Scripts/table.js",
+                "~/Scripts/bootstrap2-toggle.js",
+                "~/Scripts/bootstrap-datepicker.js",    // ** NEW for Bootstrap Datepicker
+                "~/Scripts/sweetalert2.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -48,9 +52,13 @@ namespace PAR_INTRANET
                       "~/Content/jquery.dataTables.css",
                       "~/Content/buttons.dataTables.min.css",
                       "~/Content/custom.css",
-                      "~/admin-lte/css/AdminLTE.css",
-                      "~/admin-lte/css/skins/skin-blue.css"));
-         
+                      "~/Content/bootstrap2-toggle.css",
+                      "~/Content/bootstrap-datepicker.css",  // ** NEW for Bootstrap Datepicker
+                      "~/admin-lte2.4.10/css/AdminLTE.css",
+                      "~/admin-lte2.4.10/css/skins/skin-blue.css",
+                      "~/Content/sweetalert2.min.css"
+                      ));
+
         }
     }
 }

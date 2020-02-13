@@ -2,164 +2,354 @@
 
 @{
     ViewBag.Title = "Create";
+    string incluye = "I";
+    string excluye = "E";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+@*<script src="~/Scripts/sweetalert2.js"></script>
+    <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />*@
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Comision</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.DesComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DesComi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DesComi, "", new { @class = "text-danger" })
-            </div>
+
+<div class="col-md-6">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">ALTA DE COMISION</h3>
         </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        @using (Html.BeginForm("Create", "Comisiones", new { @class = "form" }))
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FecVigDesComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FecVigDesComi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FecVigDesComi, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="form-horizontal">
+                <div class="box-body">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FecVigHasComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FecVigHasComi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FecVigHasComi, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DesComi, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DesComi, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DesComi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodNivArt1, "CodNivArt1", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CodNivArt1", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CodNivArt1, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="col-md form-inline">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FecVigDesComi, htmlAttributes: new { @class = "control-label" })
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" value="@Model.FecVigDesComi" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-orientation="auto bottom" data-date-default="today()">
+                                @Html.ValidationMessageFor(model => model.FecVigDesComi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodNivArt2, "CodNivArt2", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CodNivArt2", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CodNivArt2, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FecVigHasComi, htmlAttributes: new { @class = "control-label" })
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" value="@Model.FecVigHasComi" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-orientation="auto bottom">
+                                @Html.ValidationMessageFor(model => model.FecVigHasComi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodeleRefArt, "CodeleRefArt", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CodeleRefArt", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CodeleRefArt, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <br />
+                        @Html.LabelFor(model => model.CodNivArt1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ddlRubros", ViewBag.rubros as List<SelectListItem>,  " -- Seleccionar Rubro --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CodNivArt1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ArtIncComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.ArtIncComi)
-                    @Html.ValidationMessageFor(model => model.ArtIncComi, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CodNivArt2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ddlSubRubros", new List<SelectListItem>(), " -- Seleccionar SubRubro --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CodNivArt2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CodEleRefArt, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("CodeleRefArt", null, "--Seleccione una Marca --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CodEleRefArt, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <a data-toggle="collapse" data-target="#ArtIncGrp">
+                                    <input type="checkbox" data-toggle="toggle" data-on="Artículos <b>INCLUIDOS</b>" data-off="<b>INCLUIR</b> Artículos"
+                                           data-onstyle="success" data-offstyle="danger" value="@Model.ArtIncComi" data-width="100%" data-height="50" />
+                                </a>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.ArtIncComi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-inline collapse" id="ArtIncGrp">
+                        <div class="card card-body">
+                            <span class="pull-right">
+                                <a href="#" class="btn btn-success btn-xs btnAddArticulo" data-value="@incluye"><i class="fa fa-plus-square"></i>&nbsp;Artículos a la lista</a>
+                            </span>
+                            <br />
+                            <table class="table table-striped table-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="table-responsive-sm">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Código</th>
+                                                            <th>Descripción</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    @foreach (var articulos in Model.Articulos)
+                                                    {
+                                                        <tbody>
+                                                            <tr id="row_@articulos.CodArt">
+                                                                <td></td>
+                                                                <td style="display:none">@articulos.Articulo.CodArt</td>
+                                                                <td>@articulos.Articulo.DesArt</td>
+                                                                <td><a href="#" class="btn btn-danger btn-sm" onclick="EditOrder(@Model.IdComi)" data-toggle="tooltip" title="Edit Product"><i class="fa fa-pencil-square"></i> </a></td>
+                                                                @*<td>@Html.ActionLink(" ", "Edit", new { id = (@Model.IdComi}, new { @class = "btn btn-warning pull-right  btn-sm glyphicon glyphicon-edit" })</td>*@
+                                                            </tr>
+                                                        </tbody>
+                                                    }
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <br />
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <a data-toggle="collapse" data-target="#ArtExcGrp">
+                                    <input type="checkbox" data-toggle="toggle" data-on="Artículos <b>EXCLUIDOS</b>" data-off="<b>EXCLUIR</b> Artículos"
+                                           data-onstyle="success" data-offstyle="danger" value="@Model.ArtExcComi" data-width="100%" data-height="50" />
+                                </a>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.ArtExcComi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-inline collapse" id="ArtExcGrp">
+                        <div class="card card-body">
+                            <span class="pull-right">
+                                <a href="#" class="btn btn-success btn-xs btnAddArticulo" data-value="@excluye"><i class="fa fa-plus-square"></i>&nbsp;Artículos a la lista</a>
+                            </span>
+                            <br />
+                            <table class="table table-striped table-responsive">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="table-responsive-sm">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Código</th>
+                                                            <th>Descripción</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    @foreach (var articulos in Model.Articulos)
+                                                    {
+                                                        <tbody>
+                                                            <tr id="row_@articulos.CodArt">
+                                                                <td></td>
+                                                                <td style="display:none">@articulos.Articulo.CodArt</td>
+                                                                <td>@articulos.Articulo.DesArt</td>
+                                                                <td><a href="#" class="btn btn-danger btn-sm" onclick="EditOrder(@Model.IdComi)" data-toggle="tooltip" title="Edit Product"><i class="fa fa-pencil-square"></i> </a></td>
+                                                                @*<td>@Html.ActionLink(" ", "Edit", new { id = (@Model.IdComi}, new { @class = "btn btn-warning pull-right  btn-sm glyphicon glyphicon-edit" })</td>*@
+                                                            </tr>
+                                                        </tbody>
+                                                    }
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <br />
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <a data-toggle="collapse" data-target="#VendeComiGrp">
+                                    <input type="checkbox" data-toggle="toggle" data-on="<b>ACTIVO</b> para VENDEDORES" data-off="<b>INACTIVO</b> para VENDEDORES"
+                                           data-onstyle="success" data-offstyle="danger" value="@Model.VendeComi" data-width="100%" data-height="50" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-inline collapse" id="VendeComiGrp">
+                        <div class="card card-body">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ImpComi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ImpComi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ImpComi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PorComi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.PorComi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PorComi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <br />
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <a data-toggle="collapse" data-target="#RestoComiGrp">
+                                    <input type="checkbox" data-toggle="toggle" data-on="<b>ACTIVO</b> para EL RESTO de la Sucursal" data-off="<b>INACTIVO</b> para EL RESTO de la Sucursal"
+                                           data-onstyle="success" data-offstyle="danger" value="@Model.RestoComi" data-width="100%" data-height="50" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-inline collapse" id="RestoComiGrp">
+                        <div class="card card-body">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ImpRestoComi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ImpRestoComi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ImpRestoComi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PorRestoComi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.PorRestoComi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PorRestoComi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <br />
+                        @Html.LabelFor(model => model.IdFuncion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("FuncionComi", null, "--Seleccione una Opción --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IdFuncion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <input type="checkbox" checked data-toggle="toggle" data-on="<b>ACTIVO</b>" data-off="<b>INACTIVO</b>"
+                                       data-onstyle="success" data-offstyle="danger" value="@Model.Inactivo" data-width="100" data-height="30" />
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Inactivo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ArtExcComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.ArtExcComi)
-                    @Html.ValidationMessageFor(model => model.ArtExcComi, "", new { @class = "text-danger" })
-                </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <input type="button" name="Cancelar" value="Cancelar" class="btn btn-danger" onClick="cancelar()">
+                <button type="submit" class="btn btn-info pull-right">Crear Comisión</button>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.VendeComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.VendeComi)
-                    @Html.ValidationMessageFor(model => model.VendeComi, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImpComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImpComi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImpComi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PorComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PorComi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PorComi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RestoComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.RestoComi)
-                    @Html.ValidationMessageFor(model => model.RestoComi, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImpRestoComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImpRestoComi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImpRestoComi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PorRestoComi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PorRestoComi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PorRestoComi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Inactivo)
-                    @Html.ValidationMessageFor(model => model.Inactivo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdFuncion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IdFuncion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IdFuncion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+            <!-- /.box-footer -->
+        }
     </div>
+</div>
+
+
+<div class="modal fade" id="modalAddArticulo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="ContenedorModalAddArticulo"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $(".btnAddArticulo").click(function () {
+                var tipo = $(this).data("value");
+                $("#ContenedorModalAddArticulo").load("/Comisiones/AddArticulo/" + tipo, function () {
+                    $mymodal = $("#modalAddArticulo");
+                    //update the modal's body with the response received
+                    switch (tipo) {
+                      case "I":
+                        text = "Artículos Incluidos";
+                        break;
+                      case "E":
+                        text = "Artículos Excluidos";
+                        break;
+                    }
+                    $mymodal.find("h4.modal-title").html(text);
+                    $mymodal.modal("show")
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#ddlRubros").change(function () {
+                $.get("/Comisiones/GetSubRubrosList", { rubro: $("#ddlRubros").val() }, function (data) {
+                    // VACIAMOS EL DropDownList
+                    $("#ddlSubRubros").empty();
+                    // AÑADIMOS UN NUEVO label CON EL NOMBRE DEL ELEMENTO SELECCIONADO
+                    $("#ddlSubRubros").append("<option value> -- Seleccionar SubRubro de " + $("#ddlRubros option:selected").text() + " --</option>")
+                    // CONSTRUIMOS EL DropDownList A PARTIR DEL RESULTADO Json (data)
+                    $.each(data, function (index, row) {
+                        $("#ddlSubRubros").append("<option value='" + row.CodNivArt2 + "'>" + row.DesNivArt2 + "</option>")
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function cancelar() {
+            window.location.href = "/Comisiones/Index";
+        }
+    </script>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+

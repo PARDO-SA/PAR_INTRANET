@@ -1,185 +1,154 @@
 ﻿@model PAR_INTRANET.Models.Clases.Comision
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="col-md-6">
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">DETALLE DE COMISION</h3>
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <div class="form-horizontal">
-            <div class="box-body">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IdComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.EditorFor(model => model.IdComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.IdComi, "", new { @class = "text-danger  " })
-                    </div>
-                </div>
+<h2>Details</h2>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DesComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.EditorFor(model => model.DesComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.DesComi, "", new { @class = "text-danger  " })
-                    </div>
-                </div>
+<div>
+    <h4>Comision</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca.DesEleRefArt)
+        </dt>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FecVigDesComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.EditorFor(model => model.FecVigDesComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.FecVigDesComi, "", new { @class = "text-danger  " })
-                    </div>
-                </div>
+        <dd>
+            @Html.DisplayFor(model => model.Marca.DesEleRefArt)
+        </dd>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FecVigHasComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.EditorFor(model => model.FecVigHasComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.FecVigHasComi, "", new { @class = "text-danger  " })
-                    </div>
-                </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nivel1.DesNivArt1)
+        </dt>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CodeleRefArt, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.EditorFor(model => model.Marca.DesEleRefArt, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.Marca.DesEleRefArt, "", new { @class = "text-danger  " })
-                    </div>
-                </div>
+        <dd>
+            @Html.DisplayFor(model => model.Nivel1.DesNivArt1)
+        </dd>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CodNivArt1, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.EditorFor(model => model.Nivel1.DesNivArt1, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.Nivel1.DesNivArt1, "", new { @class = "text-danger  " })
-                    </div>
-                </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nivel2.DesNivArt2)
+        </dt>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CodNivArt2, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.EditorFor(model => model.Nivel2.DesNivArt2, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.Nivel2.DesNivArt2, "", new { @class = "text-danger  " })
-                    </div>
-                </div>
+        <dd>
+            @Html.DisplayFor(model => model.Nivel2.DesNivArt2)
+        </dd>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IdFuncion, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @Html.EditorFor(model => model.FuncionComi.DesFuncion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.FuncionComi.DesFuncion, "", new { @class = "text-danger  " })
-                    </div>
-                </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.RefArt.DesRefArt)
+        </dt>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ArtIncComi, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-5">
-                        <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
-                            <div class="handle">
-                                @Html.EditorFor(model => model.ArtIncComi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                @Html.ValidationMessageFor(model => model.ArtIncComi, "", new { @class = "text-danger  " })
-                            </div>
-                        </button>
-                    </div>
-                </div>
+        <dd>
+            @Html.DisplayFor(model => model.RefArt.DesRefArt)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.ArtIncComi)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.DesComi)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ArtIncComi)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.DesComi)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.ArtExcComi)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.FecVigDesComi)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ArtExcComi)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.FecVigDesComi)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.VendeComi)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.FecVigHasComi)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.VendeComi)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.FecVigHasComi)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.ImpComi)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtIncComi)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ImpComi)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ArtIncComi)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.PorComi)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtExcComi)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.PorComi)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ArtExcComi)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.RestoComi)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.VendeComi)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.RestoComi)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.VendeComi)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.ImpRestoComi)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpComi)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ImpRestoComi)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ImpComi)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.PorRestoComi)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.PorComi)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.PorRestoComi)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.PorComi)
+        </dd>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Inactivo, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-10">
-                        @if (Model.Inactivo == false)
-                        {
-                            @Html.Editor("activo", new { htmlAttributes = new { @class = "input_tabla_activo" } })
-                        }
-                        else
-                        {
-                            @Html.Editor("inactivo", new { htmlAttributes = new { @class = "input_tabla_inactivo" } })
-                        }
-                    </div>
-                </div>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                <input type="button" name="Volver" value="Volver" class="btn btn-danger pull-right" onClick="location.href='/Comisiones/Index'">
-            </div>
-            <!-- /.box-footer -->
-        </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.RestoComi)
+        </dt>
 
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.RestoComi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpRestoComi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImpRestoComi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PorRestoComi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PorRestoComi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inactivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inactivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdFuncion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdFuncion)
+        </dd>
+
+    </dl>
 </div>
-
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdComi }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

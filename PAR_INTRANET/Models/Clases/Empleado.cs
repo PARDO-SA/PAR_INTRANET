@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace PAR_INTRANET.Models.Clases.Tablas
 {
@@ -16,7 +12,7 @@ namespace PAR_INTRANET.Models.Clases.Tablas
         [Display(Name = "Legajo")]
         public int Legajo { get; set; }
 
-        [Required] 
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -28,7 +24,7 @@ namespace PAR_INTRANET.Models.Clases.Tablas
 
         [Display(Name = "Cod. Vendedor")]
         [StringLength(4)]
-        [CodVenEmpleValidator("FuncionP","FuncionS", ErrorMessage = "Se debe ingresar un valor, ya que una de sus funciones es Vendedor")]
+        [CodVenEmpleValidator("FuncionP", "FuncionS", ErrorMessage = "Se debe ingresar un valor, ya que una de sus funciones es Vendedor")]
         public string CodVen { get; set; }
 
         [Required]

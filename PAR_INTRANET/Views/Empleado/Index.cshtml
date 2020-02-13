@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<PAR_INTRANET.Models.Clases.Tablas.Empleado>
-<script src="~/Scripts/jquery-3.3.1.js"></script>
+
 <script src="~/Scripts/sweetalert2.js"></script>
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+
 @if (Session["Codusr"] == null)
 {
     <script type="text/javascript">
@@ -91,7 +92,7 @@
 
     <h3>Trabajar con Empleados</h3>
 
-    <table id="tabla" class="cell-border display compact" cellspacing="0">
+    <table id="tablaEmpleados" class="cell-border display compact" cellspacing="0">
         <thead>
             <tr>
                 <th>

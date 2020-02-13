@@ -1,0 +1,290 @@
+﻿@model PAR_INTRANET.Models.Clases.Vtex.VtexOrder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VtexOrder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodTipDoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodTipDoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NroDocCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NroDocCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomCliWeb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomCliWeb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DomCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DomCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DomCliEnv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DomCliEnv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IVASujeto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IVASujeto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodLocCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodLocCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodPosCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodPosCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tel1Cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tel1Cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodPosEnv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodPosEnv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodLocEnv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodLocEnv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpTotCbt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImpTotCbt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpTotFle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImpTotFle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourierID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourierID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourierName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourierName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodSuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodSuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodAlm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodAlm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DownloadDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DownloadDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Json)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Json)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSIDNotVen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSIDNotVen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CSIDVta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CSIDVta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceNotificationStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceNotificationStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceNotificationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceNotificationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackingUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrackingUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesLocCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesLocCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesProvCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesProvCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesLocEnv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesLocEnv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesProvEnv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesProvEnv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VTexOrderId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

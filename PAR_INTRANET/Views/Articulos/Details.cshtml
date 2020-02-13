@@ -1,0 +1,50 @@
+﻿@model PAR_INTRANET.Models.Clases.Tablas.Articulo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Articulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nivel1.DesNivArt1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nivel1.DesNivArt1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nivel2.DesNivArt2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nivel2.DesNivArt2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesArt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesArt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodEleRefArt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodEleRefArt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodArt }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

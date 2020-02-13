@@ -2,7 +2,7 @@
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
 <script src="~/Scripts/sweetalert2.js"></script>
-<script src="~/Scripts/jquery-3.3.1.js"></script>
+
 
 @if (Session["Codusr"] == null)
 {
@@ -69,110 +69,107 @@
         @using (Html.BeginForm("Edit", "Empleado", FormMethod.Post, new { @id = "empleEdit", role = "form", enctype = "multipart/form-data", @class = "form-horizontal" }))
         {
             @Html.AntiForgeryToken()
-        <div class="box-body">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })
 
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                    @Html.ValidationMessageFor(model => model.Legajo, "", new { @class = "text-danger  " })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.Legajo, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-2 control-label" })
 
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger  " })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger  " })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Cuil, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Cuil, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Cuil, "", new { @class = "text-danger  " })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cuil, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Cuil, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Cuil, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.FuncionP, "FuncionP", htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.DropDownList("FuncionP", null, "--Seleccione una Opción --", htmlAttributes: new { @id = "funcion1", @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.FuncionP, "", new { @class = "text-danger  " })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FuncionP, "FuncionP", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("FuncionP", null, "--Seleccione una Opción --", htmlAttributes: new { @id = "funcion1", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FuncionP, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.FuncionS, "FuncionS", htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.DropDownList("FuncionS", null, "--Seleccione una Opción --", htmlAttributes: new { @id = "funcion2", @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.FuncionS, "", new { @class = "text-danger  " })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FuncionS, "FuncionS", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("FuncionS", null, "--Seleccione una Opción --", htmlAttributes: new { @id = "funcion2", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FuncionS, "", new { @class = "text-danger  " })
 
+                    </div>
                 </div>
-            </div>
 
-            <div id="codvendedor" class="form-group">
-                @Html.LabelFor(model => model.CodVen, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CodVen, "", new { @class = "text-danger  " })
+                <div id="codvendedor" class="form-group">
+                    @Html.LabelFor(model => model.CodVen, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CodVen, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.CodSuc, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.DropDownList("CodSuc", null, htmlAttributes: new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodSuc, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("CodSuc", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    <div class="btn_formgroup" id="status" data-toggle="buttons">
-                        @if (Model.Inactivo == false)
-                        {
-                            <label class="btn btn-default btn-on btn-xs active">
-                                @Html.RadioButtonFor(model => model.Inactivo, "false") ACTIVO
-                            </label>
-                            <label class="btn btn-default btn-off btn-xs ">
-                                @Html.RadioButtonFor(model => model.Inactivo, "true") INACTIVO
-                            </label>
-                        }
-                        else
-                        {
-                            <label class="btn btn-default btn-on btn-xs ">
-                                @Html.RadioButtonFor(model => model.Inactivo, "false") ACTIVO
-                            </label>
-                            <label class="btn btn-default btn-off btn-xs active ">
-                                @Html.RadioButtonFor(model => model.Inactivo, "true") INACTIVO
-                            </label>
-                        }
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        <div class="btn_formgroup" id="status" data-toggle="buttons">
+                            @if (Model.Inactivo == false)
+                            {
+                                <label class="btn btn-default btn-on btn-xs active">
+                                    @Html.RadioButtonFor(model => model.Inactivo, "false") ACTIVO
+                                </label>
+                                <label class="btn btn-default btn-off btn-xs ">
+                                    @Html.RadioButtonFor(model => model.Inactivo, "true") INACTIVO
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="btn btn-default btn-on btn-xs ">
+                                    @Html.RadioButtonFor(model => model.Inactivo, "false") ACTIVO
+                                </label>
+                                <label class="btn btn-default btn-off btn-xs active ">
+                                    @Html.RadioButtonFor(model => model.Inactivo, "true") INACTIVO
+                                </label>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
             <!-- /.box-body -->
             <div class="box-footer">
                 <input type="button" name="Cancelar" value="Cancelar" class="btn btn-danger" onClick="location.href='/Empleado/Index'">
-                <!--<button type="submit" class="btn btn-default">Cancelar</button>-->
                 <input type="submit" value="Aplicar Cambios" class="btn btn-info pull-right" />
             </div>
             <!-- /.box-footer -->
         }
     </div>
 </div>
-
-
 
 <script type="text/javascript">
 

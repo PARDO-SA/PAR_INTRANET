@@ -1,9 +1,9 @@
-﻿<script src="~/Scripts/jquery-3.3.1.js"></script>
+﻿@model PAR_INTRANET.Models.Clases.Tablas.Empleado
+
 <script src="~/Scripts/sweetalert2.js"></script>
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
 
-@model PAR_INTRANET.Models.Clases.Tablas.Empleado
 @if (Session["Codusr"] == null)
 {
     <script type="text/javascript">
@@ -59,91 +59,91 @@
         @using (Html.BeginForm("Delete", "Empleado", FormMethod.Post, new { @id = "empleDelete", role = "form", enctype = "multipart/form-data", @class = "form-horizontal" }))
         {
             @Html.AntiForgeryToken()
-        <div class="box-body">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Legajo, htmlAttributes: new { @class = "col-sm-2 control-label" })
 
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                    @Html.ValidationMessageFor(m => m.Legajo, "", new { @class = "text-danger  " })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Legajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(m => m.Legajo, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-2 control-label" })
 
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger  " })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                    @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger  " })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Cuil, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Cuil, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                    @Html.ValidationMessageFor(m => m.Cuil, "", new { @class = "text-danger  " })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cuil, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Cuil, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(m => m.Cuil, "", new { @class = "text-danger  " })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.FuncionP, "FuncionP", htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.FuncionPri.Descripcion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FuncionP, "FuncionP", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.FuncionPri.Descripcion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.FuncionS, "FuncionS", htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.FuncionSec.Descripcion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FuncionS, "FuncionS", htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.FuncionSec.Descripcion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
                 </div>
-            </div>
 
 
-            <div id="codvendedor" class="form-group">
-                @Html.LabelFor(model => model.CodVen, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                <div id="codvendedor" class="form-group">
+                    @Html.LabelFor(model => model.CodVen, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.CodVen, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.CodSuc, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @Html.EditorFor(model => model.Sucursal.Dessuc, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodSuc, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Sucursal.Dessuc, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "col-sm-2 control-label" })
-                <div class="col-sm-10">
-                    @if (Model.Inactivo == false)
-                    {
-                        @Html.Editor("activo", new { htmlAttributes = new { @class = "input_tabla_activo", @readonly = "readonly" } })
-                    }
-                    else
-                    {
-                        @Html.Editor("inactivo", new { htmlAttributes = new { @class = "input_tabla_inactivo", @readonly = "readonly" } })
-                    }
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Inactivo, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-10">
+                        @if (Model.Inactivo == false)
+                        {
+                            @Html.Editor("activo", new { htmlAttributes = new { @class = "input_tabla_activo", @readonly = "readonly" } })
+                        }
+                        else
+                        {
+                            @Html.Editor("inactivo", new { htmlAttributes = new { @class = "input_tabla_inactivo", @readonly = "readonly" } })
+                        }
+                    </div>
                 </div>
+
+
+
             </div>
-
-          
-
-        </div>
             <!-- /.box-body -->
-        <div class="box-footer">
-            <input type="button" name="Cancelar" value="Cancelar" class="btn btn-danger" onClick="location.href='/Empleado/Index'">
-            <!--<button type="submit" class="btn btn-default">Cancelar</button>-->
-            <input type="submit" class="btn btn-info pull-right" value="Eliminar Empleado">
-        </div>
+            <div class="box-footer">
+                <input type="button" name="Cancelar" value="Cancelar" class="btn btn-danger" onClick="location.href='/Empleado/Index'">
+                <!--<button type="submit" class="btn btn-default">Cancelar</button>-->
+                <input type="submit" class="btn btn-info pull-right" value="Eliminar Empleado">
+            </div>
             <!-- /.box-footer -->
         }
     </div>
@@ -151,7 +151,7 @@
 
 
 <script type="text/javascript">
-    $("#empleDelete").submit(function(e) {
+    $("#empleDelete").submit(function (e) {
         e.preventDefault();
         var form = this;
         swal({
